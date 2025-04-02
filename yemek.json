@@ -1,2 +1,170 @@
-{ "2025-02-03": ["Ezogelin Çorba", "Sahan Köfte", "Sade Erişte", "Yoğurt"], "2025-02-04": ["Yayla Çorba", "Izgara Tavuk But / Elma Dilim Patates", "Sade Pirinç Pilavı", "Meyve"], "2025-02-05": ["Kırmızı Mercimek Çorba", "Izgara Balık / Roka", "Patates Salatası", "Tahin Helva"], "2025-02-06": ["Yeşil Mercimek Çorba", "Kori Soslu Tavuk", "Penne Makarna", "Ayran"], "2025-02-07": ["Şehriye Çorba", "Çiftlik Kebap", "Nohutlu Pirinç Pilavı", "Kemalpaşa Tatlısı"], "2025-02-10": ["Sebze Çorba", "Etli Kuru Fasulye", "Şehriyeli Pirinç Pilavı / Turşu", "Frambuaz Soslu Muhallebi"], "2025-02-11": ["Kırmızı Mercimek Çorba", "Pilav Üstü Parmak Köfte", "Kırmızı Pancarlı Salata", "Yoğurt"], "2025-02-12": ["Köylüm Çorba", "Izgara Tavuk / Kuskus Pilav", "Sebze Buketi", "Meyve"], "2025-02-13": ["Mahluta Çorba", "Patlıcan Musakka", "Sade Pirinç Pilavı", "Marullu Cacık"], "2025-02-14": ["Fesleğenli Domates Çorba", "Izgara Tavuk Kanat / Sebze Garnitür", "Soslu Spagetti", "Sevgililer Günü Pastası"], "2025-02-17": ["Şehriye Çorba", "İzmir Köfte", "Nohutlu Bulgur Pilavı", "Yoğurt"], "2025-02-18": ["Tarhana Çorba", "Soslu Sebzeli Tavuk", "Şehriyeli Pirinç Pilavı", "Trileçe"], "2025-02-19": ["Alaca Çorba", "Tas Kebap", "Sade Pirinç Pilavı", "Ayran"], "2025-02-20": ["Kırmızı Mercimek Çorba", "Izgara Tavuk But / Patates Garnitür", "Soslu Makarna", "Meyve"], "2025-02-21": ["Menü Öğrenci Konseyi Anketi ile Belirlenecektir."], "2025-02-24": ["Kırmızı Mercimek Çorba", "Tavuklu Çökertme Kebap", "Bulgur Pilavı", "Menekşe Salata"], "2025-02-25": ["Tarhana Çorba", "Etli Nohut", "Şehriyeli Pirinç Pilavı", "Trileçe"], "2025-02-26": ["Ezogelin Çorba", "Mitit Köfteli Bezelye", "Soslu Spagetti", "Meyve"], "2025-02-27": ["Menü Öğrenci Konseyi Anketi ile Belirlenecektir."], "2025-02-28": ["Yeşil Mercimek Çorba", "Tavuk Çöp Şiş / Bulgur Pilavı", "Soslu Karışık Kızartma", "Yoğurt"] }
-
+[
+  {
+    "tarih": "03.03.2025",
+    "corba": "KIRMIZI MERCİMEK ÇORBA (162 kkal)",
+    "ana_yemek": "ORMAN KEBAP (692 kkal)",
+    "yardimci_yemek": "MISIRLI PİRİNÇ PİLAVI (352 kkal)",
+    "ek": "AYRAN (64 kkal)",
+    "toplam_kalori": "1270 KKAL"
+  },
+  {
+    "tarih": "04.03.2025",
+    "corba": "ALACA ÇORBA (160 kkal)",
+    "ana_yemek": "ETLİ BEZELYE (419 kkal)",
+    "yardimci_yemek": "SADE PİRİNÇ PİLAVI (360 kkal)",
+    "ek": "İNCİR UYUTMA (265 kkal)",
+    "toplam_kalori": "1304 KKAL"
+  },
+  {
+    "tarih": "05.03.2025",
+    "corba": "DOMATES ÇORBA (242 kkal)",
+    "ana_yemek": "IZGARA TAVUK KANAT / PATATES GARNİTÜR (485 kkal)",
+    "yardimci_yemek": "BULGUR PİLAVI (299 kkal)",
+    "ek": "MEYVE (80 kkal)",
+    "toplam_kalori": "1106 KKAL"
+  },
+  {
+    "tarih": "06.03.2025",
+    "corba": "TARHANA ÇORBA (168 kkal)",
+    "ana_yemek": "SAHAN KÖFTE (387 kkal)",
+    "yardimci_yemek": "SADE ERİŞTE (325 kkal)",
+    "ek": "ŞEKERPARE (502 kkal)",
+    "toplam_kalori": "1382 KKAL"
+  },
+  {
+    "tarih": "07.03.2025",
+    "corba": "EZOGELİN ÇORBA (162 kkal)",
+    "ana_yemek": "ETLİ PATATES (387 kkal)",
+    "yardimci_yemek": "PEYNİRLİ MAKARNA (320 kkal)",
+    "ek": "MEVSİM SALATA (84 kkal)",
+    "toplam_kalori": "953 KKAL"
+  },
+  {
+    "tarih": "10.03.2025",
+    "corba": "SEBZE ÇORBA (148 kkal)",
+    "ana_yemek": "ETLİ NOHUT (405 kkal)",
+    "yardimci_yemek": "ŞEHRİYELİ PİRİNÇ PİLAVI (304 kkal)",
+    "ek": "TRİLEÇE (244 kkal)",
+    "toplam_kalori": "1101 KKAL"
+  },
+  {
+    "tarih": "11.03.2025",
+    "corba": "TARHANA ÇORBA (168 kkal)",
+    "ana_yemek": "MİSKET KÖFTE (393 kkal)",
+    "yardimci_yemek": "NOHUTLU BULGUR PİLAVI (336 kkal)",
+    "ek": "HAYDARI (181 kkal)",
+    "toplam_kalori": "1078 KKAL"
+  },
+  {
+    "tarih": "12.03.2025",
+    "corba": "KIRMIZI MERCİMEK ÇORBA (162 kkal)",
+    "ana_yemek": "BARBEKÜ SOSLU TAVUK (474 kkal)",
+    "yardimci_yemek": "SU BÖREĞİ (412 kkal)",
+    "ek": "MEYVE (80 kkal)",
+    "toplam_kalori": "1132 KKAL"
+  },
+  {
+    "tarih": "13.03.2025",
+    "corba": "ŞEHRİYE ÇORBA (114 kkal)",
+    "ana_yemek": "PİLAV ÜSTÜ ET DÖNER (594 kkal)",
+    "yardimci_yemek": "MEVSİM SALATA (84 kkal)",
+    "ek": "AYRAN (64 kkal)",
+    "toplam_kalori": "856 KKAL"
+  },
+  {
+    "tarih": "14.03.2025",
+    "corba": "MAHLUTA ÇORBA (117 kkal)",
+    "ana_yemek": "IZGARA TAVUK BUT / SEBZE GARNİTÜR (485 kkal)",
+    "yardimci_yemek": "SOSLU SPAGETTİ (313 kkal)",
+    "ek": "FINDIKLI KEŞKÜL (358 kkal)",
+    "toplam_kalori": "1273 KKAL"
+  },
+   {
+    "tarih": "17.03.2025",
+    "corba": "KÖYLÜM ÇORBA (160 kkal)",
+    "ana_yemek": "PİLAV ÜSTÜ TAVUK DÖNER (494 kkal)",
+    "yardimci_yemek": "KIRMIZI PANCARLI SALATA (198 kkal)",
+    "ek": "AYRAN (64 kkal)",
+    "toplam_kalori": "916 KKAL"
+  },
+  {
+    "tarih": "18.03.2025",
+    "corba": "ŞAFAK ÇORBA (114 kkal)",
+    "ana_yemek": "ETLİ KURU FASULYE (442 kkal)",
+    "yardimci_yemek": "SADE PİRİNÇ PİLAVI (360 kkal)",
+    "ek": "ÜZÜM HOŞAF (195 kkal)",
+    "toplam_kalori": "1111 KKAL"
+  },
+  {
+    "tarih": "19.03.2025",
+    "corba": "YOĞURT ÇORBA (149 kkal)",
+    "ana_yemek": "ÇOBAN KAVURMA (434 kkal)",
+    "yardimci_yemek": "BULGUR PİLAVI (299 kkal)",
+    "ek": "MEYVE (80 kkal)",
+    "toplam_kalori": "962 KKAL"
+  },
+  {
+    "tarih": "20.03.2025",
+    "corba": "KIRMIZI MERCİMEK ÇORBA (162 kkal)",
+    "ana_yemek": "KÖRİ SOSLU TAVUK (437 kkal)",
+    "yardimci_yemek": "TURŞULU MEVSİM SALATA (84 kkal)",
+    "ek": "KAKAOLU PUDING (318 kkal)",
+    "toplam_kalori": "1001 KKAL"
+  },
+  {
+    "tarih": "21.03.2025",
+    "corba": "FESLEĞENLİ DOMATES ÇORBA (219 kkal)",
+    "ana_yemek": "İZMİR KÖFTE (371 kkal)",
+    "yardimci_yemek": "ISPANAKLI KOL BÖREĞİ (333 kkal)",
+    "ek": "HAYDARİ (181 kkal)",
+    "toplam_kalori": "1104 KKAL"
+  },
+   {
+    "tarih": "24.03.2025",
+    "corba": "ACEM ÇORBA (186 kkal)",
+    "ana_yemek": "ETLİ KURU FASÜLYE (442 kkal)",
+    "yardimci_yemek": "ŞEHRİYELİ PİRİNÇ PİLAVI (304 kkal)",
+    "ek": "TRİLEÇE (244 kkal)",
+    "toplam_kalori": "1176 KKAL"
+  },
+  {
+    "tarih": "25.03.2025",
+    "corba": "KIRMIZI MERCİMEK ÇORBA (162 kkal)",
+    "ana_yemek": "ÇÖKERTME KEBAP (639 kkal)",
+    "yardimci_yemek": "ZEYTİNYAĞLI KEREVİZ (220 kkal)",
+    "ek": "MEYVE (80 kkal)",
+    "toplam_kalori": "1101 KKAL"
+  },
+  {
+    "tarih": "26.03.2025",
+    "corba": "TARHANA ÇORBA (168 kkal)",
+    "ana_yemek": "ADANA KEBAP / BULGUR PİLAVI (679 kkal)",
+    "yardimci_yemek": "MEVSİM SALATA (84 kkal)",
+    "ek": "KAYIFLI FISTIKLI SÜTLÜ TATLI (258 kkal)",
+    "toplam_kalori": "1189 KKAL"
+  },
+  {
+    "tarih": "27.03.2025",
+    "corba": "EZOGELİN ÇORBA (162 kkal)",
+    "ana_yemek": "MECİDİYE KÖFTE (387 kkal)",
+    "yardimci_yemek": "SOSLU SPAGETTİ (313 kkal)",
+    "ek": "AYRAN (64 kkal)",
+    "toplam_kalori": "926 KKAL"
+  },
+  {
+    "tarih": "28.03.2025",
+    "corba": "ŞEHRİYE ÇORBA (114 kkal)",
+    "ana_yemek": "TAVUKLU FİLİZ KEBAP (432 kkal)",
+    "yardimci_yemek": "BAHAR PİLAVI (462 kkal)",
+    "ek": "MARULLU CACIK (94 kkal)",
+    "toplam_kalori": "1102 KKAL"
+  },
+  {
+    "tarih": "31.03.2025",
+    "corba": "RAMAZAN BAYRAMI",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": "",
+    "toplam_kalori": ""
+  }
+]
