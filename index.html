@@ -45,17 +45,16 @@
 
         /* Tema değiştirme butonu için ek stiller */
         #theme-toggle { @apply p-2 rounded-full transition-colors duration-200; }
-        #theme-toggle .icon-container { position: relative; width: 1.25rem; height: 1.25rem; } /* İkonları üst üste bindirmek için */
+        #theme-toggle .icon-container { position: relative; width: 1.25rem; height: 1.25rem; }
         #theme-toggle .sun-icon,
         #theme-toggle .moon-icon {
              transition: opacity 0.3s ease, transform 0.3s ease;
-             position: absolute; /* İkonları üst üste bindir */
-             top: 0;
-             left: 0;
+             position: absolute; top: 0; left: 0;
         }
-        /* Başlangıçta (Koyu Tema): Güneş ikonu görünür (Açık temaya geçişi simgeler) */
         html:not(.dark) #theme-toggle .sun-icon { opacity: 0; transform: rotate(-90deg); }
         html.dark #theme-toggle .moon-icon { opacity: 0; transform: rotate(90deg); }
+
+        /* Navigasyon butonları için .nav-button sınıfı kaldırıldı, stiller HTML'e taşındı */
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-800 p-4">
@@ -73,16 +72,14 @@
         </header>
         <main class="p-4 md:p-6">
             <div class="flex justify-between items-center mb-4">
-                <button id="prev-day-btn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 font-bold py-2 px-4 rounded-lg inline-flex items-center transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
-                    <i data-lucide="arrow-left" class="mr-1 lucide"></i>
-                    Önceki
+                <button id="prev-day-btn" title="Önceki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-lucide="arrow-left" class="lucide"></i>
                 </button>
-                <div id="current-date" class="text-center font-semibold text-lg text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out">
+                <div id="current-date" class="text-center font-semibold text-lg text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out leading-tight">
                     Tarih Yükleniyor...
                 </div>
-                <button id="next-day-btn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 font-bold py-2 px-4 rounded-lg inline-flex items-center transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
-                    Sonraki
-                    <i data-lucide="arrow-right" class="ml-1 lucide"></i>
+                 <button id="next-day-btn" title="Sonraki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-lucide="arrow-right" class="lucide"></i>
                 </button>
             </div>
 
@@ -121,9 +118,9 @@
         const menuContentEl = document.getElementById('menu-content');
         const menuImageContainer = document.getElementById('menu-image-container');
         const menuImage = document.getElementById('menu-image');
-        const themeToggleBtn = document.getElementById('theme-toggle'); // Tema butonu
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Nisan ayı JSON dosyasının URL'si (Gerekirse güncelleyin)
+        // JSON dosyasının URL'si (yemek.json olarak güncellendi)
         const jsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek.json';
 
         let menuData = [];
@@ -142,9 +139,7 @@
             } else {
                 htmlElement.classList.remove('dark');
             }
-             // Lucide ikonlarını yeniden render et (tema/sınıf değişince gerekli)
              if (typeof lucide !== 'undefined') {
-                 // Kısa bir gecikme ile render etmek, stillerin oturmasına yardımcı olabilir
                  setTimeout(() => lucide.createIcons(), 50);
              }
         }
@@ -152,7 +147,7 @@
         function initializeTheme() {
             const storedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = 'dark'; // Varsayılan Koyu Tema
+            const defaultTheme = 'dark';
             let currentTheme = storedTheme || (prefersDark ? 'dark' : 'light');
             if (!storedTheme) {
                  currentTheme = defaultTheme;
@@ -175,10 +170,15 @@
             const year = date.getFullYear();
             return `${day}.${month}.${year}`;
         }
+
         function formatDisplayDate(date) {
-             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-             return date.toLocaleDateString('tr-TR', options);
+             const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+             const weekdayOptions = { weekday: 'long' };
+             const datePart = date.toLocaleDateString('tr-TR', dateOptions);
+             const weekdayPart = date.toLocaleDateString('tr-TR', weekdayOptions);
+             return `${datePart}<br>${weekdayPart}`;
         }
+
         function parseDateString(dateString) {
             if (!dateString || !/^\d{2}\.\d{2}\.\d{4}$/.test(dateString)) return null;
             const parts = dateString.split('.');
@@ -193,7 +193,7 @@
         function displayMenu(date) {
             displayDate = new Date(date);
             const formattedDate = formatDate(displayDate);
-            currentDateEl.textContent = formatDisplayDate(displayDate);
+            currentDateEl.innerHTML = formatDisplayDate(displayDate);
             updateNavigationButtons();
 
             if (isWeekend(displayDate)) {
@@ -205,7 +205,7 @@
                     </div>`;
                 menuImageContainer.classList.add('hidden');
                 if (typeof lucide !== 'undefined') {
-                    lucide.createIcons(); // Yeni eklenen ikonları render et
+                    lucide.createIcons();
                 }
                 return;
             }
@@ -213,14 +213,14 @@
             const menu = menuData.find(item => item.tarih === formattedDate);
 
             if (menu) {
-                 if (menu.ana_yemek === "Resmi Tatil") {
+                 if (menu.ana_yemek === "Resmi Tatil") { // Resmi tatil kontrolü
                      menuContentEl.innerHTML = `
                         <div class="text-center p-4">
                             <i data-lucide="party-popper" class="mx-auto h-12 w-12 text-blue-500 dark:text-blue-400 mb-2"></i>
-                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${menu.corba}</h3>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${menu.corba || 'Resmi Tatil'}</h3>
                             <p class="text-gray-500 dark:text-gray-400 mt-1">${menu.yardimci_yemek || 'Bu tarihte yemek hizmeti verilmemektedir.'}</p>
                         </div>`;
-                 } else {
+                 } else { // Normal menü gösterimi
                     menuContentEl.innerHTML = `
                         <ul class="space-y-2 text-left w-full text-gray-800 dark:text-gray-200">
                             <li class="menu-item flex items-start">
@@ -254,7 +254,7 @@
                     menuImageContainer.classList.add('hidden');
                 }
 
-            } else {
+            } else { // Menü bulunamadı
                 menuContentEl.innerHTML = `
                     <div class="text-center p-4">
                         <i data-lucide="search-slash" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i>
@@ -288,7 +288,7 @@
             todayFormatted = formatDate(currentDate);
 
             try {
-                const response = await fetch(jsonUrl);
+                const response = await fetch(jsonUrl); // URL güncellendi
                 if (!response.ok) {
                     throw new Error(`Ağ yanıtı başarısız: ${response.status} ${response.statusText}. GitHub URL'sinin (${jsonUrl}) doğru olduğundan ve internet bağlantınızın olduğundan emin olun.`);
                 }
@@ -318,7 +318,7 @@
 
             } catch (error) {
                 console.error('Başlatma sırasında hata oluştu:', error);
-                menuContentEl.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold">Yemek listesi yüklenemedi!</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Detay: ${error.message}</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lütfen internet bağlantınızı ve GitHub URL'sini kontrol edin. Tarayıcı konsolunda (F12) daha fazla ayrıntı olabilir.</p>`;
+                menuContentEl.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold">Yemek listesi yüklenemedi!</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Detay: ${error.message}</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lütfen internet bağlantınızı ve GitHub URL'sini (${jsonUrl}) kontrol edin. Tarayıcı konsolunda (F12) daha fazla ayrıntı olabilir.</p>`;
                 prevDayBtn.disabled = true;
                 nextDayBtn.disabled = true;
             }
