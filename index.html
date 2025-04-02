@@ -6,11 +6,12 @@
     <title>AÜ Yemek Listesi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Tailwind dark mode'u 'class' stratejisi ile kullanacak şekilde ayarla
         tailwind.config = {
+            darkMode: 'class', // Bu satır önemli!
             theme: {
                 extend: {
                     fontFamily: {
-                        // Inter fontunu ekleyelim
                         sans: ['Inter', 'sans-serif'],
                     },
                 }
@@ -25,72 +26,91 @@
         /* Temel stil */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Tailwind gray-100 */
+            /* Geçiş efekti */
+            @apply transition-colors duration-300 ease-in-out;
         }
-        /* Butonların aktif olmadığında görünümü */
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        /* Koyu tema için özel scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        html.dark ::-webkit-scrollbar-track { background: #2d3748; } /* gray-800 */
+        ::-webkit-scrollbar-thumb { background: #a0aec0; border-radius: 10px; } /* gray-500 */
+        html.dark ::-webkit-scrollbar-thumb { background: #4a5568; } /* gray-600 */
+        ::-webkit-scrollbar-thumb:hover { background: #718096; } /* gray-600 */
+        html.dark ::-webkit-scrollbar-thumb:hover { background: #718096; } /* gray-500 */
+
         /* İkon boyutları */
-        .lucide {
-            width: 1.25rem; /* 20px */
-            height: 1.25rem; /* 20px */
-            stroke-width: 2;
-        }
+        .lucide { width: 1.25rem; height: 1.25rem; stroke-width: 2; }
         /* Animasyon */
-        .menu-item {
-            transition: all 0.3s ease-in-out;
+        .menu-item { transition: all 0.3s ease-in-out; }
+
+        /* Tema değiştirme butonu için ek stiller */
+        #theme-toggle { @apply p-2 rounded-full transition-colors duration-200; }
+        #theme-toggle .icon-container { position: relative; width: 1.25rem; height: 1.25rem; } /* İkonları üst üste bindirmek için */
+        #theme-toggle .sun-icon,
+        #theme-toggle .moon-icon {
+             transition: opacity 0.3s ease, transform 0.3s ease;
+             position: absolute; /* İkonları üst üste bindir */
+             top: 0;
+             left: 0;
         }
+        /* Başlangıçta (Koyu Tema): Güneş ikonu görünür (Açık temaya geçişi simgeler) */
+        html:not(.dark) #theme-toggle .sun-icon { opacity: 0; transform: rotate(-90deg); }
+        html.dark #theme-toggle .moon-icon { opacity: 0; transform: rotate(90deg); }
     </style>
 </head>
-<body class="p-4">
+<body class="bg-gray-100 dark:bg-gray-800 p-4">
 
-    <div class="container mx-auto max-w-lg bg-white rounded-lg shadow-md overflow-hidden mb-6"> 
+    <div class="container mx-auto max-w-lg bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden mb-6 transition-colors duration-300 ease-in-out">
 
-        <header class="bg-blue-600 p-4 text-white text-center">
+        <header class="bg-blue-600 dark:bg-blue-800 p-4 text-white relative transition-colors duration-300 ease-in-out flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-bold">AÜ Yemek Listesi</h1>
+            <button id="theme-toggle" title="Temayı Değiştir" class="bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-white/50">
+                 <div class="icon-container">
+                     <span class="sun-icon block"><i data-lucide="sun"></i></span>
+                     <span class="moon-icon block"><i data-lucide="moon"></i></span>
+                 </div>
+            </button>
         </header>
-
         <main class="p-4 md:p-6">
             <div class="flex justify-between items-center mb-4">
-                <button id="prev-day-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                <button id="prev-day-btn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 font-bold py-2 px-4 rounded-lg inline-flex items-center transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
                     <i data-lucide="arrow-left" class="mr-1 lucide"></i>
                     Önceki
                 </button>
-                <div id="current-date" class="text-center font-semibold text-lg text-gray-700">
+                <div id="current-date" class="text-center font-semibold text-lg text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out">
                     Tarih Yükleniyor...
                 </div>
-                <button id="next-day-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg inline-flex items-center transition duration-150 ease-in-out">
+                <button id="next-day-btn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 font-bold py-2 px-4 rounded-lg inline-flex items-center transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
                     Sonraki
                     <i data-lucide="arrow-right" class="ml-1 lucide"></i>
                 </button>
             </div>
 
-            <div id="menu-content" class="bg-gray-50 p-4 rounded-lg border border-gray-200 min-h-[200px] flex flex-col justify-center items-center text-center">
-                <p class="text-gray-500">Menü yükleniyor...</p>
+            <div id="menu-content" class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg border border-gray-200 dark:border-gray-600 min-h-[200px] flex flex-col justify-center items-center text-center text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out">
+                <p class="text-gray-500 dark:text-gray-400">Menü yükleniyor...</p>
             </div>
 
-            <div id="menu-image-container" class="mt-4 hidden"> <img id="menu-image"
+            <div id="menu-image-container" class="mt-4 hidden">
+                 <img id="menu-image"
                       src="https://sksbasvuru.ankara.edu.tr/kayit/moduller/yemeklistesi/resim.php"
                       alt="Günün Yemeği Görseli"
-                      class="w-full h-auto rounded-lg shadow-sm object-contain max-h-60 border border-gray-200"
+                      class="w-full h-auto rounded-lg shadow-sm object-contain max-h-60 border border-gray-200 dark:border-gray-700"
                       onerror="this.onerror=null; this.parentElement.innerHTML='<p class=\'text-red-500 text-center\'>Görsel yüklenemedi.</p>';">
             </div>
         </main>
 
-        <footer class="bg-gray-100 p-3 text-center border-t border-gray-200">
-            <p class="text-sm text-gray-600">Öğle Yemeği Saatleri: 11:00 - 14:00</p>
+        <footer class="bg-gray-100 dark:bg-gray-800 p-3 text-center border-t border-gray-200 dark:border-gray-700 transition-colors duration-300 ease-in-out">
+            <p class="text-sm text-gray-600 dark:text-gray-400">Öğle Yemeği Saatleri: 11:00 - 14:00</p>
         </footer>
     </div>
 
-    <footer class="text-center text-xs text-gray-500 px-4">
-        <p class="mb-2">
+    <footer class="text-center text-xs text-gray-500 dark:text-gray-400 px-4 transition-colors duration-300 ease-in-out">
+         <p class="mb-2">
             Bu sayfanın hiç bir kâr amacı bulunmamaktadır. Görsel ve menü Ankara Üniversitesi'nin web sayfasından alınmıştır.
-            Üniversitenin yemek web sayfasına ulaşmak için <a href="https://sks.ankara.edu.tr/yemek-hizmetleri-2/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">tıklayınız</a>.
+            Üniversitenin yemek web sayfasına ulaşmak için <a href="https://sks.ankara.edu.tr/yemek-hizmetleri-2/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">tıklayınız</a>.
         </p>
         <p>
-            İletişim için: <a href="mailto:wrydsign@gmail.com" class="text-blue-600 hover:underline">wrydsign@gmail.com</a>
+            İletişim için: <a href="mailto:wrydsign@gmail.com" class="text-blue-600 dark:text-blue-400 hover:underline">wrydsign@gmail.com</a>
         </p>
     </footer>
     <script>
@@ -101,90 +121,108 @@
         const menuContentEl = document.getElementById('menu-content');
         const menuImageContainer = document.getElementById('menu-image-container');
         const menuImage = document.getElementById('menu-image');
+        const themeToggleBtn = document.getElementById('theme-toggle'); // Tema butonu
 
         // Nisan ayı JSON dosyasının URL'si (Gerekirse güncelleyin)
         const jsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek.json';
 
-        let menuData = []; // JSON verisini tutacak dizi
-        let currentDate = new Date(); // Başlangıçta bugünün tarihi
-        let displayDate = new Date(); // Gösterilen tarih
-        let todayFormatted = ''; // Bugünün formatlanmış hali (DD.MM.YYYY)
-        let menuStartDate = null; // Menünün başlangıç tarihi
-        let menuEndDate = null; // Menünün bitiş tarihi
+        let menuData = [];
+        let currentDate = new Date();
+        let displayDate = new Date();
+        let todayFormatted = '';
+        let menuStartDate = null;
+        let menuEndDate = null;
+
+        // --- Tema İşlevleri ---
+        const htmlElement = document.documentElement;
+
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+             // Lucide ikonlarını yeniden render et (tema/sınıf değişince gerekli)
+             if (typeof lucide !== 'undefined') {
+                 // Kısa bir gecikme ile render etmek, stillerin oturmasına yardımcı olabilir
+                 setTimeout(() => lucide.createIcons(), 50);
+             }
+        }
+
+        function initializeTheme() {
+            const storedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = 'dark'; // Varsayılan Koyu Tema
+            let currentTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+            if (!storedTheme) {
+                 currentTheme = defaultTheme;
+            }
+            applyTheme(currentTheme);
+        }
+
+        function handleThemeToggle() {
+            const isDark = htmlElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
 
         // --- Yardımcı Fonksiyonlar ---
-
-        // Tarihi DD.MM.YYYY formatına çevirir
         function formatDate(date) {
             const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // Aylar 0'dan başlar
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             const year = date.getFullYear();
             return `${day}.${month}.${year}`;
         }
-
-        // Tarihi Türkçe formatta ve gün adıyla gösterir (örn: 2 Nisan 2025, Çarşamba)
         function formatDisplayDate(date) {
              const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
              return date.toLocaleDateString('tr-TR', options);
         }
-
-        // Tarih string'ini (DD.MM.YYYY) Date objesine çevirir
         function parseDateString(dateString) {
             if (!dateString || !/^\d{2}\.\d{2}\.\d{4}$/.test(dateString)) return null;
             const parts = dateString.split('.');
-            // new Date(year, monthIndex, day)
             return new Date(parts[2], parts[1] - 1, parts[0]);
         }
-
-        // Tarihin hafta sonu olup olmadığını kontrol eder (Cumartesi=6, Pazar=0)
         function isWeekend(date) {
             const day = date.getDay();
             return day === 0 || day === 6;
         }
 
         // --- Ana Fonksiyonlar ---
-
-        // Belirli bir tarih için menüyü gösterir
         function displayMenu(date) {
-            displayDate = new Date(date); // Gösterilen tarihi güncelle
+            displayDate = new Date(date);
             const formattedDate = formatDate(displayDate);
-            currentDateEl.textContent = formatDisplayDate(displayDate); // Tarihi ekranda güncelle
-
-            // Navigasyon butonlarının durumunu güncelle
+            currentDateEl.textContent = formatDisplayDate(displayDate);
             updateNavigationButtons();
 
-            // Hafta sonu kontrolü
             if (isWeekend(displayDate)) {
                 menuContentEl.innerHTML = `
                     <div class="text-center p-4">
-                        <i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-400 mb-2"></i>
-                        <h3 class="text-lg font-semibold text-gray-700">Hafta Sonu</h3>
-                        <p class="text-gray-500 mt-1">Hafta sonları öğle yemeği hizmeti verilmemektedir.</p>
+                        <i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i>
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Hafta Sonu</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-1">Hafta sonları öğle yemeği hizmeti verilmemektedir.</p>
                     </div>`;
-                menuImageContainer.classList.add('hidden'); // Görseli gizle
+                menuImageContainer.classList.add('hidden');
                 if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
+                    lucide.createIcons(); // Yeni eklenen ikonları render et
                 }
                 return;
             }
 
-            // Menü verisini bul
             const menu = menuData.find(item => item.tarih === formattedDate);
 
-            // Menü bulunduysa göster
             if (menu) {
-                 // Resmi Tatil özel durumu (Örn: 23 Nisan)
                  if (menu.ana_yemek === "Resmi Tatil") {
                      menuContentEl.innerHTML = `
                         <div class="text-center p-4">
-                            <i data-lucide="party-popper" class="mx-auto h-12 w-12 text-blue-500 mb-2"></i>
-                            <h3 class="text-lg font-semibold text-gray-700">${menu.corba}</h3>
-                            <p class="text-gray-500 mt-1">${menu.yardimci_yemek || 'Bu tarihte yemek hizmeti verilmemektedir.'}</p>
+                            <i data-lucide="party-popper" class="mx-auto h-12 w-12 text-blue-500 dark:text-blue-400 mb-2"></i>
+                            <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${menu.corba}</h3>
+                            <p class="text-gray-500 dark:text-gray-400 mt-1">${menu.yardimci_yemek || 'Bu tarihte yemek hizmeti verilmemektedir.'}</p>
                         </div>`;
                  } else {
-                    // Normal menü gösterimi
                     menuContentEl.innerHTML = `
-                        <ul class="space-y-2 text-left w-full">
+                        <ul class="space-y-2 text-left w-full text-gray-800 dark:text-gray-200">
                             <li class="menu-item flex items-start">
                                 <i data-lucide="soup" class="text-orange-500 mr-2 mt-1 flex-shrink-0"></i>
                                 <div><strong>Çorba:</strong> ${menu.corba || '-'}</div>
@@ -208,60 +246,48 @@
                         </ul>`;
                  }
 
-                // --- GÖRSEL GÖSTERİM KONTROLÜ ---
-                // Görseli sadece bugünün tarihi gösteriliyorsa VE saat 10:00 ile 23:00 arasındaysa göster
-                const currentHour = new Date().getHours(); // Mevcut saati al
+                const currentHour = new Date().getHours();
                 if (formattedDate === todayFormatted && currentHour >= 10 && currentHour < 23) {
-                    // Cache'i engellemek için zaman damgası ekle
                     menuImage.src = "https://sksbasvuru.ankara.edu.tr/kayit/moduller/yemeklistesi/resim.php?v=" + new Date().getTime();
                     menuImageContainer.classList.remove('hidden');
                 } else {
-                    menuImageContainer.classList.add('hidden'); // Diğer durumlarda gizle
+                    menuImageContainer.classList.add('hidden');
                 }
-                // --- --- --- --- --- --- --- ---
 
             } else {
-                // Menü bulunamadıysa mesaj göster
                 menuContentEl.innerHTML = `
                     <div class="text-center p-4">
-                        <i data-lucide="search-slash" class="mx-auto h-12 w-12 text-gray-400 mb-2"></i>
-                        <h3 class="text-lg font-semibold text-gray-700">Menü Bulunamadı</h3>
-                        <p class="text-gray-500 mt-1">Bu tarih için yemek listesi mevcut değil.</p>
+                        <i data-lucide="search-slash" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i>
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Menü Bulunamadı</h3>
+                        <p class="text-gray-500 dark:text-gray-400 mt-1">Bu tarih için yemek listesi mevcut değil.</p>
                     </div>`;
-                menuImageContainer.classList.add('hidden'); // Görseli gizle
+                menuImageContainer.classList.add('hidden');
             }
-            // Dinamik olarak eklenen ikonları render et
+            // innerHTML ile eklenen ikonları render et
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         }
-
-        // Önceki güne git
         function showPreviousDay() {
             if (menuStartDate && displayDate <= menuStartDate) return;
             displayDate.setDate(displayDate.getDate() - 1);
             displayMenu(displayDate);
         }
-
-        // Sonraki güne git
         function showNextDay() {
              if (menuEndDate && displayDate >= menuEndDate) return;
             displayDate.setDate(displayDate.getDate() + 1);
             displayMenu(displayDate);
         }
-
-        // Navigasyon butonlarını etkinleştir/devre dışı bırak
         function updateNavigationButtons() {
             prevDayBtn.disabled = (menuStartDate && displayDate <= menuStartDate);
             nextDayBtn.disabled = (menuEndDate && displayDate >= menuEndDate);
         }
 
         // --- Başlangıç ---
-        async function initialize() {
-            todayFormatted = formatDate(currentDate); // Bugünün formatlanmış halini sakla
+        async function initializeApp() {
+            todayFormatted = formatDate(currentDate);
 
             try {
-                // JSON dosyasını GitHub URL'sinden yükle
                 const response = await fetch(jsonUrl);
                 if (!response.ok) {
                     throw new Error(`Ağ yanıtı başarısız: ${response.status} ${response.statusText}. GitHub URL'sinin (${jsonUrl}) doğru olduğundan ve internet bağlantınızın olduğundan emin olun.`);
@@ -269,38 +295,35 @@
                 menuData = await response.json();
 
                 if (menuData && menuData.length > 0) {
-                    // Menü başlangıç ve bitiş tarihlerini belirle
                     menuStartDate = parseDateString(menuData[0].tarih);
                     menuEndDate = parseDateString(menuData[menuData.length - 1].tarih);
 
-                    // Başlangıçta gösterilecek tarihi belirle
                     const todayMenu = menuData.find(item => item.tarih === todayFormatted);
                     const isTodayInRange = menuStartDate && menuEndDate && currentDate >= menuStartDate && currentDate <= menuEndDate;
 
                     if (todayMenu || isTodayInRange) {
-                         displayMenu(currentDate); // Bugünün menüsünü (veya mesajını) göster
+                         displayMenu(currentDate);
                     } else if (menuStartDate) {
-                         // Eğer bugün menü aralığında değilse, ilk menü gününü göster
                          displayMenu(menuStartDate);
                     } else {
-                         menuContentEl.innerHTML = '<p class="text-red-500">Hata: Menü başlangıç tarihi belirlenemedi.</p>';
+                         menuContentEl.innerHTML = '<p class="text-red-500 dark:text-red-400">Hata: Menü başlangıç tarihi belirlenemedi.</p>';
                          prevDayBtn.disabled = true;
                          nextDayBtn.disabled = true;
                     }
                 } else {
-                    menuContentEl.innerHTML = '<p class="text-red-500">Yemek listesi verisi bulunamadı veya boş.</p>';
+                    menuContentEl.innerHTML = '<p class="text-red-500 dark:text-red-400">Yemek listesi verisi bulunamadı veya boş.</p>';
                     prevDayBtn.disabled = true;
                     nextDayBtn.disabled = true;
                 }
 
             } catch (error) {
                 console.error('Başlatma sırasında hata oluştu:', error);
-                menuContentEl.innerHTML = `<p class="text-red-500 font-semibold">Yemek listesi yüklenemedi!</p> <p class="text-sm text-gray-600 mt-1">Detay: ${error.message}</p> <p class="text-sm text-gray-600 mt-1">Lütfen internet bağlantınızı ve GitHub URL'sini kontrol edin. Tarayıcı konsolunda (F12) daha fazla ayrıntı olabilir.</p>`;
+                menuContentEl.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold">Yemek listesi yüklenemedi!</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Detay: ${error.message}</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lütfen internet bağlantınızı ve GitHub URL'sini kontrol edin. Tarayıcı konsolunda (F12) daha fazla ayrıntı olabilir.</p>`;
                 prevDayBtn.disabled = true;
                 nextDayBtn.disabled = true;
             }
 
-             // Lucide ikonlarını render et
+             // Başlangıçta tüm ikonları render et
              if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
              }
@@ -309,9 +332,11 @@
         // --- Olay Dinleyiciler ---
         prevDayBtn.addEventListener('click', showPreviousDay);
         nextDayBtn.addEventListener('click', showNextDay);
+        themeToggleBtn.addEventListener('click', handleThemeToggle);
 
         // --- Başlat ---
-        document.addEventListener('DOMContentLoaded', initialize);
+        initializeTheme(); // Önce tema yüklenir
+        document.addEventListener('DOMContentLoaded', initializeApp); // Sonra uygulama içeriği yüklenir
 
     </script>
 
