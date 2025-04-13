@@ -41,44 +41,33 @@
         #date-list-popup { max-height: 200px; overflow-y: auto; z-index: 50; }
         .header-custom-bg { background-color: #0f4e8c; }
         .aspect-16-9 { aspect-ratio: 16 / 9; overflow: hidden; @apply rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800; }
-        #menu-type-toggle .icon-container { position: relative; width: 1.25rem; height: 1.25rem; }
-        #menu-type-toggle .lunch-icon, #menu-type-toggle .dinner-icon { transition: opacity 0.3s ease, transform 0.3s ease; position: absolute; top: 0; left: 0; }
-        #menu-type-toggle .dinner-icon { opacity: 0; transform: scale(0.5); }
-        #menu-type-toggle.dinner-mode .lunch-icon { opacity: 0; transform: scale(0.5); }
-        #menu-type-toggle.dinner-mode .dinner-icon { opacity: 1; transform: scale(1); }
+
+        /* Menü Tipi Butonu (Birleşik) İkon Konteyneri */
+        #menu-type-button .icon-wrapper { position: relative; width: 1.1rem; height: 1.1rem; @apply inline-block align-middle mr-2; } /* Sağ boşluk mr-2 olarak ayarlandı */
+        #menu-type-button .lunch-icon,
+        #menu-type-button .dinner-icon {
+             transition: opacity 0.3s ease, transform 0.3s ease;
+             position: absolute; top: 0; left: 0;
+             width: 100%; height: 100%;
+        }
+        /* Başlangıçta öğle ikonu görünür */
+        #menu-type-button .dinner-icon { opacity: 0; transform: scale(0.5); }
+        /* Akşam modu aktifken öğle ikonu gizlenir, akşam görünür */
+        #menu-type-button.dinner-mode .lunch-icon { opacity: 0; transform: scale(0.5); }
+        #menu-type-button.dinner-mode .dinner-icon { opacity: 1; transform: scale(1); }
 
         /* Fiyat Popup Stilleri */
-        #price-popup-overlay {
-            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out;
-        }
-        #price-popup-content {
-            @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl max-w-sm w-full mx-4 relative transition-transform duration-300 ease-in-out scale-95;
-        }
-        #price-popup-overlay:not(.hidden) #price-popup-content {
-             @apply scale-100;
-        }
-        #price-popup-close {
-            @apply absolute top-2 right-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700;
-        }
-        /* Fiyat Tablosu Stilleri */
-        #price-table {
-            @apply w-full text-sm text-left border-collapse;
-        }
-        #price-table thead th {
-             @apply px-4 py-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600;
-        }
-        #price-table tbody tr {
-             @apply border-b dark:border-gray-700;
-        }
-         #price-table tbody tr:last-child {
-             @apply border-b-0;
-         }
-        #price-table td {
-            @apply px-4 py-3 text-gray-700 dark:text-gray-200;
-        }
-         #price-table td:last-child {
-             @apply font-medium text-gray-900 dark:text-white text-right;
-         }
+        #price-popup-overlay { @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out; }
+        #price-popup-content { @apply bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl max-w-sm w-full mx-4 relative transition-transform duration-300 ease-in-out scale-95; }
+        #price-popup-overlay:not(.hidden) #price-popup-content { @apply scale-100; }
+        #price-popup-close { @apply absolute top-2 right-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700; }
+        #price-table { @apply w-full text-sm text-left border-collapse; }
+        #price-table thead th { @apply px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider bg-gray-100 dark:bg-gray-700 border-b-2 border-gray-300 dark:border-gray-600; }
+        #price-table tbody tr { @apply border-b dark:border-gray-700; }
+        #price-table tbody tr:last-child { @apply border-b-0; }
+        #price-table td { @apply px-4 py-3 text-gray-700 dark:text-gray-200; }
+        #price-table td:last-child { @apply font-medium text-gray-900 dark:text-white text-right; }
+        .trilece-highlight { @apply border-l-4 border-yellow-400 dark:border-yellow-500 pl-3 transition-all bg-yellow-50 dark:bg-yellow-900/30; }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-800 p-4">
@@ -100,33 +89,30 @@
 
         <main class="p-4 md:p-6 relative">
             <div class="flex justify-between items-center mb-2">
-                <button id="prev-day-btn" title="Önceki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="prev-day-btn" title="Önceki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-transform duration-150 ease-in-out active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed">
                     <i data-lucide="arrow-left" class="lucide"></i>
                 </button>
-                <div id="current-date" class="text-center font-semibold text-lg text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out leading-tight flex-grow mx-2">
+                <div id="current-date" title="Tarih Seç" class="text-center font-semibold text-lg text-gray-700 dark:text-gray-200 transition-colors duration-300 ease-in-out leading-tight flex-grow mx-2 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400">
                     Tarih Yükleniyor...
                 </div>
-                <button id="next-day-btn" title="Sonraki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="next-day-btn" title="Sonraki Gün" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-transform duration-150 ease-in-out active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed">
                     <i data-lucide="arrow-right" class="lucide"></i>
                 </button>
             </div>
 
-            <div class="flex justify-between items-center mt-1 mb-4">
-                 <button id="menu-type-toggle" title="Menü Tipini Değiştir" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out">
-                    <div class="icon-container">
-                        <span class="lunch-icon"><i data-lucide="sunrise"></i></span>
-                        <span class="dinner-icon"><i data-lucide="sunset"></i></span>
-                    </div>
+            <div class="flex justify-center items-center mt-1 mb-4">
+                  
+                 <button id="menu-type-button" title="Menü Tipini Değiştir" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md shadow-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 transition-colors duration-200">
+                    
+                    <span class="icon-wrapper mr-2">
+                        <span class="lunch-icon"><i data-lucide="utensils"></i></span> 
+                        <span class="dinner-icon"><i data-lucide="utensils-crossed"></i></span> 
+                    </span>
+                    <span id="menu-type-button-text">Öğle Yemeği Menüsü</span>
                  </button>
-                 <span id="menu-type-label" class="text-sm font-medium text-gray-600 dark:text-gray-300 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex-grow text-center mx-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">
-                     Öğle Yemeği Menüsü
-                 </span>
-                 <button id="date-list-toggle" title="Tarih Listesi" class="p-2 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-200 hover:bg-gray-300 dark:bg-gray-600 dark:hover:bg-gray-500 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed">
-                    <i data-lucide="calendar-days" class="lucide"></i>
-                </button>
             </div>
 
-            <div id="date-list-popup" class="hidden absolute right-4 mt-1 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600">
+            <div id="date-list-popup" class="hidden absolute left-1/2 -translate-x-1/2 mt-1 w-56 bg-white dark:bg-gray-700 rounded-md shadow-lg border border-gray-200 dark:border-gray-600">
                 <div class="p-2 text-center text-gray-500 dark:text-gray-400">Yükleniyor...</div>
             </div>
 
@@ -160,13 +146,13 @@
             <h2 class="text-lg font-semibold text-center mb-4 text-gray-900 dark:text-white">Yemek Ücretleri</h2>
             <div class="overflow-x-auto mb-4 rounded-md border border-gray-200 dark:border-gray-700">
                 <table id="price-table">
-                    <thead class="bg-gray-50 dark:bg-gray-700">
+                    <thead class="bg-gray-100 dark:bg-gray-700">
                         <tr>
-                            <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Kategori</th>
-                            <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Ücret</th>
+                            <th scope="col" class="px-4 py-3 text-left text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Kategori</th>
+                            <th scope="col" class="px-4 py-3 text-right text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Ücret</th>
                         </tr>
                     </thead>
-                    <tbody id="price-list-body" class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <tbody id="price-list-body">
                         <tr><td colspan="2" class="text-center py-4 text-gray-500 dark:text-gray-400">Yükleniyor...</td></tr>
                     </tbody>
                 </table>
@@ -174,7 +160,7 @@
             <p class="text-xs text-gray-500 dark:text-gray-400 text-center border-t border-gray-200 dark:border-gray-700 pt-3">
                 Not: Yemek ücretleri ve saatleri değişebilir. Güncel duyurular için lütfen
                 <a href="https://sks.ankara.edu.tr/" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">Ankara Üniversitesi SKS</a>
-                sayfasını takip ediniz.
+                sayfasını takip ediniz.  
             </p>
         </div>
     </div>
@@ -198,10 +184,9 @@
         const menuImageContainer = document.getElementById('menu-image-container');
         const menuImage = document.getElementById('menu-image');
         const themeToggleBtn = document.getElementById('theme-toggle');
-        const dateListToggleBtn = document.getElementById('date-list-toggle');
         const dateListPopup = document.getElementById('date-list-popup');
-        const menuTypeToggleBtn = document.getElementById('menu-type-toggle');
-        const menuTypeLabel = document.getElementById('menu-type-label');
+        const menuTypeButton = document.getElementById('menu-type-button');
+        const menuTypeButtonText = document.getElementById('menu-type-button-text');
         const lunchHoursEl = document.getElementById('lunch-hours');
         const dinnerHoursEl = document.getElementById('dinner-hours');
         const priceToggleBtn = document.getElementById('price-toggle-btn');
@@ -211,39 +196,30 @@
         const priceListBody = document.getElementById('price-list-body');
 
         const lunchJsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek.json';
-        // Akşam yemeği URL'si eklendi
         const dinnerJsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek_aksam.json';
 
-        const priceData = [
-            { label: "Öğrenci (Öğle Yemeği)", value: "₺30" },
-            { label: "Öğrenci (Akşam Yemeği)", value: "₺60" },
-            { label: "Öğretim Üyesi (Prof, Doç, Dr. Öğr. Üyesi)", value: "₺110" },
-            { label: "Diğer Akademik Personel (Arş. Gör, Öğr. Gör)", value: "₺85" },
-            { label: "Memur, Hizmetli", value: "₺60" },
-            { label: "İşçi, Sürekli İşçi", value: "₺169,65" },
-            { label: "Misafir", value: "₺170" }
-         ];
+        const priceData = [ {"label": "Öğrenci (Öğle Yemeği)", "value": "₺30"}, {"label": "Öğrenci (Akşam Yemeği)", "value": "₺60"}, {"label": "Öğretim Üyesi (Prof, Doç, Dr. Öğr. Üyesi)", "value": "₺110"}, {"label": "Diğer Akademik Personel (Arş. Gör, Öğr. Gör)", "value": "₺85"}, {"label": "Memur, Hizmetli", "value": "₺60"}, {"label": "İşçi, Sürekli İşçi", "value": "₺169,65"}, {"label": "Misafir", "value": "₺170"} ];
 
         let lunchMenuData = [];
-        let dinnerMenuData = []; // Başlangıçta boş, fetch edilecek
+        let dinnerMenuData = [];
         let currentMenuType = 'lunch';
         let currentDate = new Date();
         let displayDate = new Date();
         let todayFormatted = '';
-        let menuStartDate = null; // Öğle yemeğine göre belirlenecek
-        let menuEndDate = null; // Öğle yemeğine göre belirlenecek
+        let menuStartDate = null;
+        let menuEndDate = null;
 
         // --- Tema İşlevleri ---
         const htmlElement = document.documentElement;
-        function applyTheme(theme) {
+        function applyTheme(theme) { /* ... (kod aynı) ... */
              const isDark = theme === 'dark';
             htmlElement.classList.toggle('dark', isDark);
              if (typeof lucide !== 'undefined') {
                  setTimeout(() => lucide.createIcons(), 50);
              }
         }
-        function initializeTheme() {
-            const storedTheme = localStorage.getItem('theme');
+        function initializeTheme() { /* ... (kod aynı) ... */
+             const storedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const defaultTheme = 'dark';
             let currentTheme = storedTheme || (prefersDark ? 'dark' : 'light');
@@ -252,7 +228,7 @@
             }
             applyTheme(currentTheme);
         }
-        function handleThemeToggle() {
+        function handleThemeToggle() { /* ... (kod aynı) ... */
               const isDark = htmlElement.classList.contains('dark');
             const newTheme = isDark ? 'light' : 'dark';
             applyTheme(newTheme);
@@ -260,36 +236,38 @@
         }
 
         // --- Yardımcı Fonksiyonlar ---
-        function formatDate(date) {
+        function formatDate(date) { /* ... (kod aynı) ... */
              const day = String(date.getDate()).padStart(2, '0');
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const year = date.getFullYear();
             return `${day}.${month}.${year}`;
         }
-        function formatDisplayDate(date) {
-              const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        function formatDisplayDate(date) { /* ... (kod aynı) ... */
+               const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
              const weekdayOptions = { weekday: 'long' };
              const datePart = date.toLocaleDateString('tr-TR', dateOptions);
              const weekdayPart = date.toLocaleDateString('tr-TR', weekdayOptions);
              return `${datePart}<br><span class="text-sm font-normal">${weekdayPart}</span>`;
         }
-        function parseDateString(dateString) {
-              if (!dateString || !/^\d{2}\.\d{2}\.\d{4}$/.test(dateString)) return null;
+        function parseDateString(dateString) { /* ... (kod aynı) ... */
+               if (!dateString || !/^\d{2}\.\d{2}\.\d{4}$/.test(dateString)) return null;
             const parts = dateString.split('.');
             return new Date(parts[2], parts[1] - 1, parts[0]);
         }
-        function isWeekend(date) {
-               const day = date.getDay();
+        function isWeekend(date) { /* ... (kod aynı) ... */
+                 const day = date.getDay();
             return day === 0 || day === 6;
         }
 
         // --- Ana Fonksiyonlar ---
-        function displayMenu(date) {
-            displayDate = new Date(date);
+        function displayMenu(date) { /* ... (kod aynı) ... */
+             displayDate = new Date(date);
             const formattedDate = formatDate(displayDate);
             currentDateEl.innerHTML = formatDisplayDate(displayDate);
-            updateNavigationButtons(); // Navigasyon butonlarını güncelle (veri yüklendikten sonra anlamlı)
-            menuTypeLabel.textContent = currentMenuType === 'lunch' ? 'Öğle Yemeği Menüsü' : 'Akşam Yemeği Menüsü';
+            updateNavigationButtons();
+            if (menuTypeButtonText) {
+                 menuTypeButtonText.textContent = currentMenuType === 'lunch' ? 'Öğle Yemeği Menüsü' : 'Akşam Yemeği Menüsü';
+            }
 
             const dataToUse = currentMenuType === 'lunch' ? lunchMenuData : dinnerMenuData;
             const menu = dataToUse.find(item => item.tarih === formattedDate);
@@ -297,33 +275,40 @@
             lunchHoursEl.classList.toggle('hidden', currentMenuType !== 'lunch');
             dinnerHoursEl.classList.toggle('hidden', currentMenuType !== 'dinner');
 
-            // Sadece öğle yemeği seçiliyken hafta sonu kontrolü yap
             if (currentMenuType === 'lunch' && isWeekend(displayDate)) {
                 menuContentEl.innerHTML = `<div class="text-center p-4"><i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Hafta Sonu</h3><p class="text-gray-500 dark:text-gray-400 mt-1">Öğle yemeği için hafta sonu hizmeti verilmemektedir.</p></div>`;
                 menuImageContainer.classList.add('hidden');
                 if (typeof lucide !== 'undefined') { lucide.createIcons(); }
                 return;
             }
-
-            // Menü bulunduysa göster
             if (menu) {
-                 // Resmi tatil kontrolü (Öğle yemeği verisine göre yapalım)
                  const lunchMenuItem = lunchMenuData.find(item => item.tarih === formattedDate);
-                 const isHoliday = lunchMenuItem && lunchMenuItem.ana_yemek === "Resmi Tatil";
+                 const holidayName = (lunchMenuItem?.corba || '').toLowerCase();
+                 const isNationalHoliday = lunchMenuItem?.ana_yemek === "Resmi Tatil";
+                 const isRamazan = holidayName.includes('ramazan bayramı');
+                 const isKurban = holidayName.includes('kurban bayramı');
 
-                 if (isHoliday) {
-                     menuContentEl.innerHTML = `<div class="text-center p-4"><i data-lucide="party-popper" class="mx-auto h-12 w-12 text-blue-500 dark:text-blue-400 mb-2"></i><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${lunchMenuItem.corba || 'Resmi Tatil'}</h3><p class="text-gray-500 dark:text-gray-400 mt-1">${lunchMenuItem.yardimci_yemek || 'Bu tarihte yemek hizmeti verilmemektedir.'}</p></div>`;
-                 } else { // Normal menü gösterimi
-                    let menuHtml = `<ul class="space-y-2 text-left w-full text-gray-800 dark:text-gray-200"><li class="menu-item flex items-start"><i data-lucide="soup" class="text-orange-500 mr-2 mt-1 flex-shrink-0"></i><div><strong>Çorba:</strong> ${menu.corba || '-'}</div></li><li class="menu-item flex items-start"><i data-lucide="beef" class="text-red-600 mr-2 mt-1 flex-shrink-0"></i><div><strong>Ana Yemek:</strong> ${menu.ana_yemek || '-'}</div></li><li class="menu-item flex items-start"><i data-lucide="salad" class="text-green-600 mr-2 mt-1 flex-shrink-0"></i><div><strong>Yardımcı Yemek:</strong> ${menu.yardimci_yemek || '-'}</div></li><li class="menu-item flex items-start"><i data-lucide="cake-slice" class="text-purple-500 mr-2 mt-1 flex-shrink-0"></i><div><strong>Ek:</strong> ${menu.ek || '-'}</div></li>`;
-                    // Sadece öğle yemeği menüsünde toplam kalori varsa göster
+                 if (isRamazan || isKurban || (isNationalHoliday && currentMenuType === 'lunch')) {
+                     let emoji = '🎉';
+                     if (isRamazan) emoji = '🍬'; // Şeker emojisi Ramazan için daha uygun olabilir
+                     if (isKurban) emoji = '🐑';
+                     if (isNationalHoliday) emoji = '🇹🇷';
+                     menuContentEl.innerHTML = `<div class="text-center p-4"><span class="text-4xl mb-2 inline-block">${emoji}</span><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${lunchMenuItem.corba || 'Tatil'}</h3><p class="text-gray-500 dark:text-gray-400 mt-1">${lunchMenuItem.yardimci_yemek || 'Mutlu Bayramlar!<br>Bu tarihte yemek hizmeti verilmemektedir.'}</p></div>`;
+                 } else {
+                    const checkTrilece = (text) => text && typeof text === 'string' && text.toLowerCase().includes('trileçe');
+                    let menuHtml = `<ul class="space-y-2 text-left w-full text-gray-800 dark:text-gray-200">`;
+                    const items = [ { key: 'corba', icon: 'soup', color: 'orange-500', label: 'Çorba' }, { key: 'ana_yemek', icon: 'beef', color: 'red-600', label: 'Ana Yemek' }, { key: 'yardimci_yemek', icon: 'salad', color: 'green-600', label: 'Yardımcı Yemek' }, { key: 'ek', icon: 'cake-slice', color: 'purple-500', label: 'Ek' } ];
+                    items.forEach(itemInfo => {
+                        const itemValue = menu[itemInfo.key] || '-';
+                        const highlightClass = checkTrilece(itemValue) ? 'trilece-highlight' : '';
+                        menuHtml += `<li class="menu-item flex items-start ${highlightClass}"><i data-lucide="${itemInfo.icon}" class="text-${itemInfo.color} mr-2 mt-1 flex-shrink-0"></i><div class="flex-grow"><strong>${itemInfo.label}:</strong> ${itemValue}</div></li>`;
+                    });
                     if (currentMenuType === 'lunch' && menu.toplam_kalori) {
-                        menuHtml += `<li class="menu-item flex items-start"><i data-lucide="flame" class="text-yellow-500 mr-2 mt-1 flex-shrink-0"></i><div><strong>Toplam Kalori:</strong> ${menu.toplam_kalori}</div></li>`;
+                        menuHtml += `<li class="menu-item flex items-start"><i data-lucide="flame" class="text-yellow-500 mr-2 mt-1 flex-shrink-0"></i><div class="flex-grow"><strong>Toplam Kalori:</strong> ${menu.toplam_kalori}</div></li>`;
                     }
                     menuHtml += `</ul>`;
                     menuContentEl.innerHTML = menuHtml;
                  }
-
-                // Görsel gösterimi (sadece öğle yemeği için ve belirli saatlerde)
                 const currentHour = new Date().getHours();
                 if (currentMenuType === 'lunch' && formattedDate === todayFormatted && currentHour >= 10 && currentHour < 23) {
                     menuImage.src = "https://sksbasvuru.ankara.edu.tr/kayit/moduller/yemeklistesi/resim.php?v=" + new Date().getTime();
@@ -331,37 +316,33 @@
                 } else {
                     menuImageContainer.classList.add('hidden');
                 }
-            } else { // Menü bulunamadı
+            } else {
                 menuContentEl.innerHTML = `<div class="text-center p-4"><i data-lucide="search-slash" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Menü Bulunamadı</h3><p class="text-gray-500 dark:text-gray-400 mt-1">Bu tarih için ${currentMenuType === 'lunch' ? 'öğle' : 'akşam'} yemeği listesi mevcut değil.</p></div>`;
                 menuImageContainer.classList.add('hidden');
             }
             if (typeof lucide !== 'undefined') { lucide.createIcons(); }
         }
-        function showPreviousDay() {
-             if (menuStartDate && displayDate <= menuStartDate) return;
+        function showPreviousDay() { /* ... (kod aynı) ... */
+              if (menuStartDate && displayDate <= menuStartDate) return;
             displayDate.setDate(displayDate.getDate() - 1);
             displayMenu(displayDate);
         }
-        function showNextDay() {
-             if (menuEndDate && displayDate >= menuEndDate) return;
+        function showNextDay() { /* ... (kod aynı) ... */
+               if (menuEndDate && displayDate >= menuEndDate) return;
             displayDate.setDate(displayDate.getDate() + 1);
             displayMenu(displayDate);
         }
-        function updateNavigationButtons() {
-            // Butonları etkinleştirme/devre dışı bırakmayı öğle yemeği verisine göre yapalım
-            const start = lunchMenuData.length > 0 ? parseDateString(lunchMenuData[0].tarih) : null;
+        function updateNavigationButtons() { /* ... (kod aynı) ... */
+               const start = lunchMenuData.length > 0 ? parseDateString(lunchMenuData[0].tarih) : null;
             const end = lunchMenuData.length > 0 ? parseDateString(lunchMenuData[lunchMenuData.length - 1].tarih) : null;
             prevDayBtn.disabled = (start && displayDate <= start);
             nextDayBtn.disabled = (end && displayDate >= end);
-            // Tarih listesi butonunu öğle yemeği verisine göre ayarla
-            dateListToggleBtn.disabled = !(lunchMenuData && lunchMenuData.length > 0);
-            // Menü tipi butonu her zaman aktif olabilir (veri olmasa bile geçiş denenebilir)
-            menuTypeToggleBtn.disabled = false;
+            if (menuTypeButton) menuTypeButton.disabled = false;
         }
 
         // --- Tarih Listesi Fonksiyonları ---
-        function populateDateList() {
-             const dataForList = lunchMenuData; // Liste öğle yemeğine göre
+        function populateDateList() { /* ... (kod aynı) ... */
+               const dataForList = lunchMenuData;
              if (!dataForList || dataForList.length === 0) {
                 dateListPopup.innerHTML = '<div class="p-2 text-center text-sm text-gray-500 dark:text-gray-400">Tarih yok</div>';
                 return;
@@ -394,7 +375,8 @@
              }
         }
          function closePopupOnClickOutside(event) {
-               if (!dateListPopup.contains(event.target) && !dateListToggleBtn.contains(event.target)) {
+             // Eğer tıklanan yer popup DEĞİLSE VE tıklanan yer tarih göstergesi DEĞİLSE kapat
+             if (!dateListPopup.contains(event.target) && !currentDateEl.contains(event.target)) {
                 dateListPopup.classList.add('hidden');
             } else {
                  if (!dateListPopup.classList.contains('hidden')) { document.addEventListener('click', closePopupOnClickOutside, { once: true }); }
@@ -402,11 +384,11 @@
          }
 
          // --- Menü Tipi Değiştirme ---
-         function handleMenuTypeToggle() {
-             currentMenuType = (currentMenuType === 'lunch') ? 'dinner' : 'lunch';
-            menuTypeToggleBtn.classList.toggle('dinner-mode', currentMenuType === 'dinner');
-            menuTypeLabel.textContent = currentMenuType === 'lunch' ? 'Öğle Yemeği Menüsü' : 'Akşam Yemeği Menüsü';
-            displayMenu(displayDate); // Menüyü yeni tiple yeniden göster
+         function handleMenuTypeToggle() { /* ... (kod aynı) ... */
+              currentMenuType = (currentMenuType === 'lunch') ? 'dinner' : 'lunch';
+            if (menuTypeButton) { menuTypeButton.classList.toggle('dinner-mode', currentMenuType === 'dinner'); }
+            if (menuTypeButtonText) { menuTypeButtonText.textContent = currentMenuType === 'lunch' ? '   Öğle Yemeği Menüsü' : 'Akşam Yemeği Menüsü'; }
+            displayMenu(displayDate);
             if (typeof lucide !== 'undefined') { lucide.createIcons(); }
          }
 
@@ -415,77 +397,70 @@
               priceListBody.innerHTML = '';
              priceData.forEach((item, index) => {
                  const row = document.createElement('tr');
-                 const bgClass = index % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700/50';
+                 const bgClass = index % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700';
                  row.className = bgClass;
                  row.innerHTML = `<td class="px-4 py-3 text-gray-700 dark:text-gray-200">${item.label}</td><td class="px-4 py-3 font-medium text-gray-900 dark:text-white text-right">${item.value}</td>`;
                  priceListBody.appendChild(row);
              });
          }
          function showPricePopup() { /* ... (kod aynı) ... */
-              pricePopupOverlay.classList.remove('hidden');
+               pricePopupOverlay.classList.remove('hidden');
              if (typeof lucide !== 'undefined') { lucide.createIcons(); }
          }
          function hidePricePopup() { /* ... (kod aynı) ... */
-              pricePopupOverlay.classList.add('hidden');
+               pricePopupOverlay.classList.add('hidden');
          }
 
 
         // --- Başlangıç ---
         async function initializeApp() {
             todayFormatted = formatDate(currentDate);
-            let lunchFetchError = null;
-            let dinnerFetchError = null;
 
-            // Her iki JSON dosyasını da fetch etmeyi dene
+            const currentHour = new Date().getHours();
+            const currentMinute = new Date().getMinutes();
+            if ((currentHour > 16 || (currentHour === 16 && currentMinute >= 30)) && currentHour < 21) {
+                currentMenuType = 'dinner';
+            } else {
+                currentMenuType = 'lunch';
+            }
+            if (menuTypeButton) { menuTypeButton.classList.toggle('dinner-mode', currentMenuType === 'dinner'); }
+             if (menuTypeButtonText) { menuTypeButtonText.textContent = currentMenuType === 'lunch' ? '   Öğle Yemeği Menüsü' : 'Akşam Yemeği Menüsü'; }
+
             try {
                 const [lunchResponse, dinnerResponse] = await Promise.all([
-                    fetch(lunchJsonUrl).catch(e => { lunchFetchError = e; return null; }), // Hata durumunda null dön
-                    fetch(dinnerJsonUrl).catch(e => { dinnerFetchError = e; return null; }) // Hata durumunda null dön
+                    fetch(lunchJsonUrl).catch(e => { console.error('Öğle yemeği fetch hatası:', e); return null; }),
+                    fetch(dinnerJsonUrl).catch(e => { console.error('Akşam yemeği fetch hatası:', e); return null; })
                 ]);
 
-                // Öğle yemeği verisini işle
                 if (lunchResponse && lunchResponse.ok) {
                     lunchMenuData = await lunchResponse.json();
-                } else {
-                    console.error('Öğle yemeği verisi alınamadı:', lunchFetchError || lunchResponse?.statusText);
-                    // Öğle yemeği verisi kritikse burada hata fırlatabilir veya devam edebiliriz
-                    // throw new Error(`Öğle yemeği verisi alınamadı: ${lunchFetchError || lunchResponse?.statusText}`);
-                }
-
-                 // Akşam yemeği verisini işle
+                } else { console.error('Öğle yemeği verisi alınamadı:', lunchResponse?.statusText); }
                 if (dinnerResponse && dinnerResponse.ok) {
                     dinnerMenuData = await dinnerResponse.json();
-                } else {
-                     console.error('Akşam yemeği verisi alınamadı:', dinnerFetchError || dinnerResponse?.statusText);
-                     // Akşam yemeği verisi kritik değilse, boş dizi ile devam edilebilir
-                     dinnerMenuData = []; // Boş dizi ata
-                }
+                } else { console.error('Akşam yemeği verisi alınamadı:', dinnerResponse?.statusText); dinnerMenuData = []; }
 
-
-                // Öğle yemeği verisi varsa devam et
                 if (lunchMenuData && lunchMenuData.length > 0) {
                     menuStartDate = parseDateString(lunchMenuData[0].tarih);
                     menuEndDate = parseDateString(lunchMenuData[lunchMenuData.length - 1].tarih);
-                    populateDateList(); // Öğle yemeği verisine göre listeyi doldur
+                    populateDateList();
                     const todayMenuLunch = lunchMenuData.find(item => item.tarih === todayFormatted);
                     const isTodayInRange = menuStartDate && menuEndDate && currentDate >= menuStartDate && currentDate <= menuEndDate;
                     let initialDateToShow = menuStartDate;
                     if (todayMenuLunch || isTodayInRange) { initialDateToShow = currentDate; }
-                    displayMenu(initialDateToShow); // Başlangıç menüsünü göster (varsayılan öğle)
-                } else { // Öğle yemeği verisi yoksa veya boşsa
+                    displayMenu(initialDateToShow);
+                } else {
                     menuContentEl.innerHTML = '<p class="text-red-500 dark:text-red-400">Öğle yemeği listesi verisi bulunamadı veya boş.</p>';
-                    prevDayBtn.disabled = true; nextDayBtn.disabled = true; dateListToggleBtn.disabled = true; menuTypeToggleBtn.disabled = true;
+                    prevDayBtn.disabled = true; nextDayBtn.disabled = true; if (menuTypeButton) menuTypeButton.disabled = true;
                     dateListPopup.innerHTML = '<div class="p-2 text-center text-sm text-gray-500 dark:text-gray-400">Tarih yok</div>';
                 }
-
-            } catch (error) { // Genel fetch veya JSON parse hatası
+            } catch (error) {
                 console.error('Başlatma sırasında hata oluştu:', error);
                 menuContentEl.innerHTML = `<p class="text-red-500 dark:text-red-400 font-semibold">Yemek listesi yüklenemedi!</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Detay: ${error.message}</p> <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Lütfen internet bağlantınızı ve menü URL'lerini kontrol edin.</p>`;
-                prevDayBtn.disabled = true; nextDayBtn.disabled = true; dateListToggleBtn.disabled = true; menuTypeToggleBtn.disabled = true;
+                prevDayBtn.disabled = true; nextDayBtn.disabled = true; if (menuTypeButton) menuTypeButton.disabled = true;
                 dateListPopup.innerHTML = '<div class="p-2 text-center text-sm text-red-500 dark:text-red-400">Liste yüklenemedi</div>';
             }
 
-            populatePriceList(); // Fiyat listesini doldur
+            populatePriceList();
 
              if (typeof lucide !== 'undefined') { lucide.createIcons(); }
         }
@@ -494,15 +469,13 @@
         prevDayBtn.addEventListener('click', showPreviousDay);
         nextDayBtn.addEventListener('click', showNextDay);
         themeToggleBtn.addEventListener('click', handleThemeToggle);
-        dateListToggleBtn.addEventListener('click', toggleDateListPopup);
-        menuTypeToggleBtn.addEventListener('click', handleMenuTypeToggle);
-        menuTypeLabel.addEventListener('click', handleMenuTypeToggle); // Etiket de menüyü değiştirir
+        currentDateEl.addEventListener('click', toggleDateListPopup);
+        if (menuTypeButton) { menuTypeButton.addEventListener('click', handleMenuTypeToggle); }
         priceToggleBtn.addEventListener('click', showPricePopup);
         pricePopupCloseBtn.addEventListener('click', hidePricePopup);
         pricePopupOverlay.addEventListener('click', (event) => {
              if (event.target === pricePopupOverlay) { hidePricePopup(); }
         });
-
 
         // --- Başlat ---
         initializeTheme();
