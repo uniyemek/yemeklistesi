@@ -96,5 +96,54 @@
     "ana_yemek": "Kıymalı Makarna",
     "yardimci_yemek": "Zeytinyağlı Kabak Kalye",
     "ek": "Tulumba Tatlısı"
+  },
+  {
+    "tarih": "21.04.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Sahan Köfte",
+    "yardimci_yemek": "Sade Erişte",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "22.04.2025",
+    "corba": "Mısır Çorba",
+    "ana_yemek": "Etli Nohut",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı",
+    "ek": "Fındıklı Keşkül"
+  },
+  {
+    "tarih": "23.04.2025",
+    "corba": "Tarhana Çorba",
+    "ana_yemek": "Izgara Tavuk But / Patates Garnitür",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Meyve"
+  },
+  {
+    "tarih": "24.04.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Sulu Köfte",
+    "yardimci_yemek": "Bulgur Pilavı",
+    "ek": "Turşu"
+  },
+  {
+    "tarih": "25.04.2025",
+    "corba": "Ezogelin Çorba",
+    "ana_yemek": "Çiftlik Kebap",
+    "yardimci_yemek": "Arpa Şehriye Pilavı",
+    "ek": "Haydari"
+  },
+  {
+    "tarih": "26.04.2025",
+    "corba": "Şehriye Çorba",
+    "ana_yemek": "Etli Bezelye",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Trileçe"
+  },
+  {
+    "tarih": "27.04.2025",
+    "corba": "Yeşil Mercimek Çorba",
+    "ana_yemek": "Tavuk Sote",
+    "yardimci_yemek": "Soslu Spagetti",
+    "ek": "Yoğurt"
   }
 ]
