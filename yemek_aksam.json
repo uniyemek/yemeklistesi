@@ -145,5 +145,26 @@
     "ana_yemek": "Tavuk Sote",
     "yardimci_yemek": "Soslu Spagetti",
     "ek": "Yoğurt"
+  },
+  {
+    "tarih": "28.04.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Pilav Üstü Tavuk Döner",
+    "yardimci_yemek": "Ayran",
+    "ek": "Kalburabastı"
+  },
+  {
+    "tarih": "29.04.2025",
+    "corba": "Yoğurt Çorba",
+    "ana_yemek": "Etli Nohut",
+    "yardimci_yemek": "Bulgur Pilavı",
+    "ek": "Turşu"
+  },
+  {
+    "tarih": "30.04.2025",
+    "corba": "Şehriye Çorba",
+    "ana_yemek": "İzmir Köfte",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Meyve"
   }
 ]
