@@ -75,5 +75,54 @@
     "ana_yemek": "Etli Şehriyeli Güveç",
     "yardimci_yemek": "Mevsim Salata",
     "ek": "Ayran"
+  },
+  {
+    "tarih": "12.05.2025",
+    "corba": "Tarhana Çorba",
+    "ana_yemek": "Izgara Tavuk Kanat / Patates Garnitür",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Meyve"
+  },
+  {
+    "tarih": "13.05.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Sulu Köfte",
+    "yardimci_yemek": "Su Böreği",
+    "ek": "Üzüm Hoşaf"
+  },
+  {
+    "tarih": "14.05.2025",
+    "corba": "Yoğurt Çorba",
+    "ana_yemek": "Etli Kuru Fasülye",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Kemalpaşa Tatlısı"
+  },
+  {
+    "tarih": "15.05.2025",
+    "corba": "Tarhana Çorba",
+    "ana_yemek": "Çiftlik Kebap",
+    "yardimci_yemek": "Bulgur Pilavı",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "16.05.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Etli Bezelye",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı",
+    "ek": "Halka Tatlı"
+  },
+  {
+    "tarih": "17.05.2025",
+    "corba": "Fesleğenli Domates Çorba",
+    "ana_yemek": "Tavuk Sote",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Yoğurt"
+  },
+  {
+    "tarih": "18.05.2025",
+    "corba": "Ezogelin Çorba",
+    "ana_yemek": "Izgara Köfte / Patates Garnitür",
+    "yardimci_yemek": "Sade Erişte",
+    "ek": "Menekşe Salata"
   }
 ]
