@@ -222,5 +222,33 @@
     "ana_yemek": "Sahan Köfte",
     "yardimci_yemek": "Şehriyeli Pirinç Pilavı",
     "ek": "Mevsim Salata"
+  },
+  {
+    "tarih": "02.06.2025",
+    "corba": "Yeşil Mercimek Çorba",
+    "ana_yemek": "Kıymalı Makarna",
+    "yardimci_yemek": "Zeytinyağlı Taze Fasülye",
+    "ek": "Meyve"
+  },
+  {
+    "tarih": "03.06.2025",
+    "corba": "Şehriye Çorba",
+    "ana_yemek": "Tas Kebap",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Yoğurt"
+  },
+  {
+    "tarih": "04.06.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Sulu Köfte",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "05.06.2025",
+    "corba": "Kurban Bayramı Tatili",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": ""
   }
 ]
