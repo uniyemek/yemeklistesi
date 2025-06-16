@@ -250,5 +250,124 @@
     "ana_yemek": "",
     "yardimci_yemek": "",
     "ek": ""
+  },
+  {
+    "tarih": "06.06.2025",
+    "corba": "Kurban Bayramı Tatili",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": ""
+  },
+  {
+    "tarih": "07.06.2025",
+    "corba": "Kurban Bayramı Tatili",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": ""
+  },
+  {
+    "tarih": "08.06.2025",
+    "corba": "Kurban Bayramı Tatili",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": ""
+  },
+  {
+    "tarih": "09.06.2025",
+    "corba": "Kurban Bayramı Tatili",
+    "ana_yemek": "",
+    "yardimci_yemek": "",
+    "ek": ""
+  },
+  {
+    "tarih": "10.06.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Pilav Üstü Et Döner",
+    "yardimci_yemek": "Zeytinyağlı Taze Fasulye",
+    "ek": "Sade Muhallebi"
+  },
+  {
+    "tarih": "11.06.2025",
+    "corba": "Tarhana Çorba",
+    "ana_yemek": "Tavuk Sote",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Meyve"
+  },
+  {
+    "tarih": "12.06.2025",
+    "corba": "Düğün Çorba",
+    "ana_yemek": "Sulu Köfte",
+    "yardimci_yemek": "Arpa Şehriye Pilavı",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "13.06.2025",
+    "corba": "Yeşil Mercimek Çorba",
+    "ana_yemek": "Etli Bezelye",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Şekerpare"
+  },
+  {
+    "tarih": "14.06.2025",
+    "corba": "Şehriye Çorba",
+    "ana_yemek": "Lahmacun",
+    "yardimci_yemek": "Salata",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "15.06.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Sahan Köfte",
+    "yardimci_yemek": "Bulgur Pilavı",
+    "ek": "Haydari"
+  },
+  {
+    "tarih": "16.06.2025",
+    "corba": "Mahluta Çorba",
+    "ana_yemek": "Tas Kebap",
+    "yardimci_yemek": "Arpa Şehriye Pilavı",
+    "ek": "Cacık"
+  },
+  {
+    "tarih": "17.06.2025",
+    "corba": "Yeşil Mercimek Çorba",
+    "ana_yemek": "Sulu Köfte",
+    "yardimci_yemek": "Soslu Makarna",
+    "ek": "Yoğurt"
+  },
+  {
+    "tarih": "18.06.2025",
+    "corba": "Yoğurt Çorba",
+    "ana_yemek": "Etli Patates",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı",
+    "ek": "Halka Tatlı"
+  },
+  {
+    "tarih": "19.06.2025",
+    "corba": "Şehriye Çorba",
+    "ana_yemek": "Sahan Köfte",
+    "yardimci_yemek": "Bulgur Pilavı",
+    "ek": "Meyve"
+  },
+  {
+    "tarih": "20.06.2025",
+    "corba": "Tarhana Çorba",
+    "ana_yemek": "Kajun Baharatlı Tavuk",
+    "yardimci_yemek": "Soslu Spagetti",
+    "ek": "Ayran"
+  },
+  {
+    "tarih": "21.06.2025",
+    "corba": "Kırmızı Mercimek Çorba",
+    "ana_yemek": "Adana Kebap / Bulgur Pilavı",
+    "yardimci_yemek": "Mevsim Salata",
+    "ek": "Haydari"
+  },
+  {
+    "tarih": "22.06.2025",
+    "corba": "Köylüm Çorba",
+    "ana_yemek": "Etli Taze Fasülye",
+    "yardimci_yemek": "Sade Pirinç Pilavı",
+    "ek": "Trileçe"
   }
 ]
