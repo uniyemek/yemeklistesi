@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AÜ Yemek Listesi</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/mert-yemek/yemeklistesi/refs/heads/main/pagelogo.png">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/uniyemek/yemeklistesi/refs/heads/main/pagelogo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -68,7 +68,7 @@
 
         <header class="header-custom-bg p-4 text-white relative transition-colors duration-300 ease-in-out flex items-center">
             <a href="#" title="Sayfayı Yenile">
-                <img src="https://raw.githubusercontent.com/mert-yemek/yemeklistesi/refs/heads/main/pagelogo.png" alt="AÜ Logo" class="h-8 w-8 mr-3 flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/uniyemek/yemeklistesi/refs/heads/main/pagelogo.png" alt="AÜ Logo" class="h-8 w-8 mr-3 flex-shrink-0">
             </a>
             <h1 class="text-xl md:text-2xl font-bold flex-grow text-center">AÜ Yemek Listesi</h1>
             <button id="theme-toggle" title="Temayı Değiştir" class="bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 text-white rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-white/50 ml-3 flex-shrink-0">
@@ -199,8 +199,8 @@
         const pricePopupCloseBtn = document.getElementById('price-popup-close');
         const priceListBody = document.getElementById('price-list-body');
 
-        const lunchJsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek.json';
-        const dinnerJsonUrl = 'https://raw.githubusercontent.com/mert-yemek/yemeklistesi/main/yemek_aksam.json';
+        const lunchJsonUrl = 'https://raw.githubusercontent.com/uniyemek/yemeklistesi/main/yemek.json';
+        const dinnerJsonUrl = 'https://raw.githubusercontent.com/uniyemek/yemeklistesi/main/yemek_aksam.json';
 
         const priceData = [ {"label": "Öğrenci (Öğle Yemeği)", "value": "₺30"}, {"label": "Öğrenci (Akşam Yemeği)", "value": "₺60"}, {"label": "Öğretim Üyesi (Prof, Doç, Dr. Öğr. Üyesi)", "value": "₺110"}, {"label": "Diğer Akademik Personel (Arş. Gör, Öğr. Gör)", "value": "₺85"}, {"label": "Memur, Hizmetli", "value": "₺60"}, {"label": "İşçi, Sürekli İşçi", "value": "₺169,65"}, {"label": "Misafir", "value": "₺170"} ];
 
