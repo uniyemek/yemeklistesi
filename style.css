@@ -72,16 +72,13 @@ html.dark .aspect-16-9 {
     position: fixed; 
     top: 0; right: 0; bottom: 0; left: 0; 
     background-color: rgba(0, 0, 0, 0.5); 
-    display: none; /* Varsayılan gizli */
+    display: none; 
     align-items: center; 
     justify-content: center; 
     z-index: 50; 
     transition: opacity 0.3s ease-in-out; 
 }
-
-#price-popup-overlay:not(.hidden) {
-    display: flex;
-}
+#price-popup-overlay:not(.hidden) { display: flex; }
 
 #price-popup-content { 
     background-color: white; 
@@ -136,7 +133,9 @@ html.dark #price-table td { color: #e5e7eb; }
 #price-table td:last-child { font-weight: 500; color: #111827; text-align: right; }
 html.dark #price-table td:last-child { color: white; }
 
-/* Trileçe Vurgusu */
+/* --- VURGULAMA STİLLERİ --- */
+
+/* Trileçe (Sarı) */
 .trilece-highlight { 
     border-left-width: 4px; 
     border-color: #facc15; 
@@ -147,6 +146,32 @@ html.dark #price-table td:last-child { color: white; }
 html.dark .trilece-highlight { 
     border-color: #eab308; 
     background-color: rgba(113, 63, 18, 0.3); 
+}
+
+/* Lovebombing (Kırmızı) */
+.lovebombing-highlight {
+    border-left-width: 4px;
+    border-color: #ef4444; /* Red-500 */
+    padding-left: 0.75rem;
+    transition-property: all;
+    background-color: #fef2f2; /* Red-50 */
+}
+html.dark .lovebombing-highlight {
+    border-color: #dc2626; /* Red-600 */
+    background-color: rgba(127, 29, 29, 0.3);
+}
+
+/* Ghosting (Koyu Gri/Siyah) */
+.ghosting-highlight {
+    border-left-width: 4px;
+    border-color: #374151; /* Gray-700 */
+    padding-left: 0.75rem;
+    transition-property: all;
+    background-color: #f3f4f6; /* Gray-100 */
+}
+html.dark .ghosting-highlight {
+    border-color: #9ca3af; /* Gray-400 */
+    background-color: rgba(31, 41, 55, 0.5);
 }
 
 /* Trileçe Popup Stili */
