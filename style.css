@@ -1,0 +1,164 @@
+/* Temel Ayarlar */
+body { 
+    font-family: 'Inter', sans-serif; 
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Kaydırma Çubuğu */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+html.dark ::-webkit-scrollbar-track { background: #2d3748; }
+::-webkit-scrollbar-thumb { background: #a0aec0; border-radius: 10px; }
+html.dark ::-webkit-scrollbar-thumb { background: #4a5568; }
+::-webkit-scrollbar-thumb:hover { background: #718096; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #718096; }
+
+/* Genel İkon ve Animasyonlar */
+.lucide { width: 1.25rem; height: 1.25rem; stroke-width: 2; }
+.menu-item { transition: all 0.3s ease-in-out; }
+
+/* Tema Değiştirme Butonu */
+#theme-toggle { 
+    padding: 0.5rem; 
+    border-radius: 9999px; 
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+}
+#theme-toggle .icon-container { position: relative; width: 1.25rem; height: 1.25rem; }
+#theme-toggle .sun-icon, #theme-toggle .moon-icon { transition: opacity 0.3s ease, transform 0.3s ease; position: absolute; top: 0; left: 0; }
+html:not(.dark) #theme-toggle .sun-icon { opacity: 0; transform: rotate(-90deg); }
+html.dark #theme-toggle .moon-icon { opacity: 0; transform: rotate(90deg); }
+
+/* Tarih Listesi Popup */
+#date-list-popup { max-height: 200px; overflow-y: auto; z-index: 50; }
+
+/* Özel Arka Plan */
+.header-custom-bg { background-color: #0f4e8c; }
+
+/* Görsel Konteyneri (16:9) */
+.aspect-16-9 { 
+    aspect-ratio: 16 / 9; 
+    overflow: hidden; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border-width: 1px;
+    border-color: #e5e7eb;
+    background-color: #f9fafb;
+}
+html.dark .aspect-16-9 {
+    border-color: #374151;
+    background-color: #1f2937;
+}
+
+/* Menü Tipi Butonu Animasyonları */
+#menu-type-button .icon-wrapper { 
+    position: relative; 
+    width: 1.1rem; 
+    height: 1.1rem; 
+    display: inline-block; 
+    vertical-align: middle; 
+    margin-right: 0.5rem; 
+}
+#menu-type-button .lunch-icon, #menu-type-button .dinner-icon { transition: opacity 0.3s ease, transform 0.3s ease; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+#menu-type-button .dinner-icon { opacity: 0; transform: scale(0.5); }
+#menu-type-button.dinner-mode .lunch-icon { opacity: 0; transform: scale(0.5); }
+#menu-type-button.dinner-mode .dinner-icon { opacity: 1; transform: scale(1); }
+
+/* Fiyat Popup Stilleri */
+#price-popup-overlay { 
+    position: fixed; 
+    top: 0; right: 0; bottom: 0; left: 0; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; /* Varsayılan gizli */
+    align-items: center; 
+    justify-content: center; 
+    z-index: 50; 
+    transition: opacity 0.3s ease-in-out; 
+}
+
+#price-popup-overlay:not(.hidden) {
+    display: flex;
+}
+
+#price-popup-content { 
+    background-color: white; 
+    padding: 1.5rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); 
+    max-width: 24rem; 
+    width: 100%; 
+    margin-left: 1rem; 
+    margin-right: 1rem; 
+    position: relative; 
+    transition: transform 0.3s ease-in-out; 
+    transform: scale(0.95); 
+}
+html.dark #price-popup-content { background-color: #1f2937; }
+#price-popup-overlay:not(.hidden) #price-popup-content { transform: scale(1); }
+
+#price-popup-close { 
+    position: absolute; 
+    top: 0.5rem; 
+    right: 0.5rem; 
+    color: #6b7280; 
+    padding: 0.25rem; 
+    border-radius: 9999px; 
+    cursor: pointer;
+}
+html.dark #price-popup-close { color: #9ca3af; }
+#price-popup-close:hover { background-color: #f3f4f6; color: #374151; }
+html.dark #price-popup-close:hover { background-color: #374151; color: #e5e7eb; }
+
+/* Fiyat Tablosu */
+#price-table { width: 100%; font-size: 0.875rem; line-height: 1.25rem; text-align: left; border-collapse: collapse; }
+#price-table thead th { 
+    padding: 0.75rem 1rem; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+    color: #4b5563; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    background-color: #f3f4f6; 
+    border-bottom-width: 2px; 
+    border-color: #d1d5db; 
+}
+html.dark #price-table thead th { color: #d1d5db; background-color: #374151; border-color: #4b5563; }
+
+#price-table tbody tr { border-bottom-width: 1px; border-color: #e5e7eb; }
+html.dark #price-table tbody tr { border-color: #374151; }
+#price-table tbody tr:last-child { border-bottom-width: 0; }
+
+#price-table td { padding: 0.75rem 1rem; color: #374151; }
+html.dark #price-table td { color: #e5e7eb; }
+#price-table td:last-child { font-weight: 500; color: #111827; text-align: right; }
+html.dark #price-table td:last-child { color: white; }
+
+/* Trileçe Vurgusu */
+.trilece-highlight { 
+    border-left-width: 4px; 
+    border-color: #facc15; 
+    padding-left: 0.75rem; 
+    transition-property: all; 
+    background-color: #fefce8; 
+}
+html.dark .trilece-highlight { 
+    border-color: #eab308; 
+    background-color: rgba(113, 63, 18, 0.3); 
+}
+
+/* Trileçe Popup Stili */
+#trilece-popup-overlay { 
+    position: fixed; 
+    top: 0; right: 0; bottom: 0; left: 0; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 50; 
+    transition: opacity 0.3s ease-in-out; 
+}
+#trilece-popup-overlay:not(.hidden) { display: flex; }
+#trilece-popup-close { position: absolute; top: 0.5rem; right: 0.5rem; cursor: pointer; }
