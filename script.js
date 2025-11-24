@@ -27,6 +27,7 @@ const trilecePopupOverlay = document.getElementById('trilece-popup-overlay');
 const trilecePopupCloseBtn = document.getElementById('trilece-popup-close');
 const trileceResultContent = document.getElementById('trilece-result-content');
 
+// --- JSON BAĞLANTILARI ESKİ HALİNE DÖNDÜ (GitHub Raw Linkleri) ---
 const lunchJsonUrl = 'https://raw.githubusercontent.com/uniyemek/yemeklistesi/main/yemek.json';
 const dinnerJsonUrl = 'https://raw.githubusercontent.com/uniyemek/yemeklistesi/main/yemek_aksam.json';
 
@@ -111,7 +112,6 @@ function displayMenu(date) {
     if (currentMenuType === 'lunch' && isWeekend(displayDate)) {
         menuContentEl.innerHTML = `<div class="text-center p-4"><i data-lucide="calendar-off" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Hafta Sonu</h3><p class="text-gray-500 dark:text-gray-400 mt-1">Öğle yemeği için hafta sonu hizmeti verilmemektedir.</p></div>`;
         if (typeof lucide !== 'undefined') lucide.createIcons();
-        // Durum çubuğunu gizle
         const statusContainer = document.getElementById('status-container');
         if (statusContainer) statusContainer.classList.add('hidden');
         return;
@@ -131,7 +131,6 @@ function displayMenu(date) {
 
             menuContentEl.innerHTML = `<div class="text-center p-4"><span class="text-4xl mb-2 inline-block">${emoji}</span><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">${menu.corba || 'Tatil'}</h3><p class="text-gray-500 dark:text-gray-400 mt-1">${menu.yardimci_yemek || 'Mutlu Bayramlar!'}</p></div>`;
         } else {
-            const checkTrilece = (text) => text && typeof text === 'string' && text.toLowerCase().includes('trileçe');
             let menuHtml = `<ul class="space-y-2 text-left w-full text-gray-800 dark:text-gray-200">`;
             const items = [ 
                 { key: 'corba', icon: 'soup', color: 'orange-500', label: 'Çorba' }, 
@@ -142,8 +141,23 @@ function displayMenu(date) {
             
             items.forEach(itemInfo => {
                 const itemValue = menu[itemInfo.key] || '-';
-                const highlightClass = checkTrilece(itemValue) ? 'trilece-highlight' : '';
-                menuHtml += `<li class="menu-item flex items-start ${highlightClass}"><i data-lucide="${itemInfo.icon}" class="text-${itemInfo.color} mr-2 mt-1 flex-shrink-0"></i><div class="flex-grow"><strong>${itemInfo.label}:</strong> ${itemValue}</div></li>`;
+                const textLower = itemValue.toString().toLowerCase();
+                
+                // VURGULAMA MANTIĞI (Trileçe, Lovebombing, Ghosting)
+                let highlightClass = '';
+                let extraEmoji = '';
+
+                if (textLower.includes('trileçe')) {
+                    highlightClass = 'trilece-highlight';
+                } else if (textLower.includes('lovebombing')) {
+                    highlightClass = 'lovebombing-highlight';
+                    extraEmoji = ' <span class="text-red-500 text-lg">❤️</span>';
+                } else if (textLower.includes('ghosting') || textLower.includes('gosting')) {
+                    highlightClass = 'ghosting-highlight';
+                    extraEmoji = ' <span class="text-gray-800 dark:text-gray-200 text-lg">🖤</span>';
+                }
+
+                menuHtml += `<li class="menu-item flex items-start ${highlightClass}"><i data-lucide="${itemInfo.icon}" class="text-${itemInfo.color} mr-2 mt-1 flex-shrink-0"></i><div class="flex-grow"><strong>${itemInfo.label}:</strong> ${itemValue}${extraEmoji}</div></li>`;
             });
 
             if (currentMenuType === 'lunch' && menu.toplam_kalori) {
@@ -159,7 +173,6 @@ function displayMenu(date) {
                 menuImageContainer.classList.remove('hidden');
             }
         }
-        // Durum güncellemesi
         updateStatus();
     } else {
         menuContentEl.innerHTML = `<div class="text-center p-4"><i data-lucide="search-slash" class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-2"></i><h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Menü Bulunamadı</h3><p class="text-gray-500 dark:text-gray-400 mt-1">Bu tarih için liste mevcut değil.</p></div>`;
@@ -169,7 +182,7 @@ function displayMenu(date) {
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
-// --- Durum Çubuğu ve Geri Sayım (YENİ) ---
+// --- Durum Çubuğu ve Geri Sayım ---
 function updateStatus() {
     const statusContainer = document.getElementById('status-container');
     const statusText = document.getElementById('status-text');
@@ -178,7 +191,6 @@ function updateStatus() {
 
     if (!statusContainer) return;
 
-    // Sadece bugünü gösteriyorsak çalışsın
     if (formatDate(displayDate) !== todayFormatted) {
         statusContainer.classList.add('hidden');
         return;
@@ -191,7 +203,6 @@ function updateStatus() {
     const currentM = now.getMinutes();
     const currentTimeMinutes = currentH * 60 + currentM;
 
-    // Saatleri Dakikaya Çevir (Akşam 18:00 - 20:00 olarak güncellendi)
     const lunchStart = 11 * 60;      // 11:00
     const lunchEnd = 14 * 60;        // 14:00
     const dinnerStart = 18 * 60;     // 18:00
@@ -247,7 +258,7 @@ function updateStatus() {
     statusBar.className = `h-2.5 rounded-full transition-all duration-1000 ease-linear ${colorClass}`;
 }
 
-// --- Diğer Fonksiyonlar (Paylaş, Trileçe, vs) ---
+// --- Diğer Fonksiyonlar ---
 function showPreviousDay() {
     if (menuStartDate && displayDate <= menuStartDate) return;
     displayDate.setDate(displayDate.getDate() - 1);
@@ -394,8 +405,6 @@ async function initializeApp() {
 
     const currentHour = new Date().getHours();
     const currentMinute = new Date().getMinutes();
-    // Otomatik geçişi de 17:00'ye çekebiliriz veya 16:30'da bırakabiliriz. 
-    // Akşam yemeği 18:00'de başladığı için 16:30 makul bir "önizleme" saatidir.
     if ((currentHour > 16 || (currentHour === 16 && currentMinute >= 30)) && currentHour < 21) {
         currentMenuType = 'dinner';
     } else {
@@ -441,10 +450,35 @@ async function initializeApp() {
     populatePriceList();
     if (typeof lucide !== 'undefined') lucide.createIcons();
     
-    // Geri sayımı başlat
     updateStatus();
     setInterval(updateStatus, 60000);
 }
+
+// --- Klavye Kısayolları ---
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        pricePopupOverlay.classList.add('hidden');
+        trilecePopupOverlay.classList.add('hidden');
+        dateListPopup.classList.add('hidden');
+        return;
+    }
+
+    const isAnyPopupOpen = !pricePopupOverlay.classList.contains('hidden') || 
+                           !trilecePopupOverlay.classList.contains('hidden') || 
+                           !dateListPopup.classList.contains('hidden');
+
+    if (!isAnyPopupOpen) {
+        if (e.key === 'ArrowLeft') {
+            showPreviousDay();
+        } else if (e.key === 'ArrowRight') {
+            showNextDay();
+        } else if (e.key === 'ArrowUp') {
+            if (currentMenuType === 'dinner') handleMenuTypeToggle();
+        } else if (e.key === 'ArrowDown') {
+            if (currentMenuType === 'lunch') handleMenuTypeToggle();
+        }
+    }
+});
 
 // --- Event Listeners ---
 prevDayBtn.addEventListener('click', showPreviousDay);
