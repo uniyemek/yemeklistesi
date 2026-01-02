@@ -1,186 +1,178 @@
 [
   {
-    "tarih": "01.12.2025",
-    "corba": "Ezogelin Çorba (162 kcal)",
-    "ana_yemek": "Kırkağaç Köfte (452 kcal)",
-    "yardimci_yemek": "Cevizli Erişte (149 kcal)",
-    "ek": "Sarışınım Tatlısı (440 kcal)",
-    "toplam_kalori": "1203 KKAL"
+    "tarih": "01.01.2026",
+    "corba": "1 Ocak Yılbaşı Tatili",
+    "ana_yemek": "Resmi Tatil",
+    "yardimci_yemek": "",
+    "ek": "",
+    "toplam_kalori": ""
   },
   {
-    "tarih": "02.12.2025",
-    "corba": "Kırmızı Mercimek Çorba (162 kcal)",
-    "ana_yemek": "Orman Kebap (692 kcal)",
-    "yardimci_yemek": "Bulgur Pilavı (299 kcal)",
+    "tarih": "02.01.2026",
+    "corba": "Yeşil Mercimek Çorba (200 kcal)",
+    "ana_yemek": "Çoban Kavurma (478 kcal)",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı (435 kcal)",
+    "ek": "Haydari (181 kcal)",
+    "toplam_kalori": "1294 KKAL"
+  },
+  {
+    "tarih": "05.01.2026",
+    "corba": "Köylüm Çorba (206 kcal)",
+    "ana_yemek": "Lahmacun (711 kcal)",
+    "yardimci_yemek": "Menekşe Salata (84 kcal)",
     "ek": "Ayran (64 kcal)",
-    "toplam_kalori": "1217 KKAL"
+    "toplam_kalori": "1065 KKAL"
   },
   {
-    "tarih": "03.12.2025",
-    "corba": "Alaca Çorba (160 kcal)",
-    "ana_yemek": "Ispanak Yatağında Izgara Tavuk (360 kcal)",
-    "yardimci_yemek": "Soslu Makarna (313 kcal)",
-    "ek": "Trileçe (244 kcal)",
-    "toplam_kalori": "1077 KKAL"
-  },
-  {
-    "tarih": "04.12.2025",
-    "corba": "Tarhana Çorba (168 kcal)",
-    "ana_yemek": "Sebzeli Köfte (447 kcal)",
-    "yardimci_yemek": "Şehriyeli Pirinç Pilavı (304 kcal)",
-    "ek": "Yoğurt (158 kcal)",
-    "toplam_kalori": "1077 KKAL"
-  },
-  {
-    "tarih": "05.12.2025",
-    "corba": "Şehriye Çorba (114 kcal)",
-    "ana_yemek": "Kajun Baharatlı Tavuk/Ketçap-Mayonez (413 kcal)",
-    "yardimci_yemek": "Soslu Spagetti (313 kcal)",
-    "ek": "Menekşe Salata (84 kcal)",
-    "toplam_kalori": "924 KKAL"
-  },
-  {
-    "tarih": "08.12.2025",
-    "corba": "Sebze Çorba (148 kcal)",
-    "ana_yemek": "Etli Kuru Fasulye (442 kcal)",
-    "yardimci_yemek": "Şehriyeli Pirinç Pilavı/Turşu (304 kcal)",
-    "ek": "Soğuk Baklava (353 kcal)",
-    "toplam_kalori": "1247 KKAL"
-  },
-  {
-    "tarih": "09.12.2025",
-    "corba": "Yeşil Mercimek Çorba (198 kcal)",
-    "ana_yemek": "Izgara Tavuk But/Patates Garnitür (519 kcal)",
-    "yardimci_yemek": "Soslu Spagetti (313 kcal)",
-    "ek": "Ayran (64 kcal)",
-    "toplam_kalori": "1094 KKAL"
-  },
-  {
-    "tarih": "10.12.2025",
-    "corba": "Kırmızı Mercimek Çorba (162 kcal)",
-    "ana_yemek": "Mantarlı Köfte (434 kcal)",
-    "yardimci_yemek": "Mısırlı Pirinç Pilavı (352 kcal)",
-    "ek": "Havuç Tarator (128 kcal)",
-    "toplam_kalori": "1076 KKAL"
-  },
-  {
-    "tarih": "11.12.2025",
-    "corba": "Domates Çorba (242 kcal)",
-    "ana_yemek": "Barbekü Soslu Tavuk Biftek/Sebze Garnitür (504 kcal)",
+    "tarih": "06.01.2026",
+    "corba": "Tarhana Çorba (176 kcal)",
+    "ana_yemek": "Barbekü Soslu Tavuk Biftek/Sebze Garnitür (601 kcal)",
     "yardimci_yemek": "Patatesli Kol Böreği (494 kcal)",
-    "ek": "Trileçe (244 kcal)",
-    "toplam_kalori": "1484 KKAL"
+    "ek": "Fındıklı Keşkül (358 kcal)",
+    "toplam_kalori": "1629 KKAL"
   },
   {
-    "tarih": "12.12.2025",
-    "corba": "Ezogelin Çorba (162 kcal)",
-    "ana_yemek": "İçli Köfte (372 kcal)",
+    "tarih": "07.01.2026",
+    "corba": "Domates Çorba (248 kcal)",
+    "ana_yemek": "İçli Köfte (497 kcal)",
     "yardimci_yemek": "Sebze Graten (336 kcal)",
     "ek": "Meyve (80 kcal)",
-    "toplam_kalori": "950 KKAL"
+    "toplam_kalori": "1161 KKAL"
   },
   {
-    "tarih": "15.12.2025",
-    "corba": "Hanım Ağa Çorba (284 kcal)",
-    "ana_yemek": "Tavuk Wrap (400 kcal)",
-    "yardimci_yemek": "Patates Kroket/Ketçap-Mayonez (528 kcal)",
+    "tarih": "08.01.2026",
+    "corba": "Yayla Çorba (188 kcal)",
+    "ana_yemek": "Etli Nohut (422 kcal)",
+    "yardimci_yemek": "Bulgur Pilavı/Turşu (378 kcal)",
+    "ek": "Frambuaz Rüyası (302 kcal)",
+    "toplam_kalori": "1290 KKAL"
+  },
+  {
+    "tarih": "09.01.2026",
+    "corba": "Kırmızı Mercimek Çorba (204 kcal)",
+    "ana_yemek": "Kajun Baharatlı Tavuk/Ketçap-Mayonez (663 kcal)",
+    "yardimci_yemek": "Soslu Spagetti (456 kcal)",
+    "ek": "Coleslaw (107 kcal)",
+    "toplam_kalori": "1430 KKAL"
+  },
+  {
+    "tarih": "12.01.2026",
+    "corba": "Alaca Çorba (194 kcal)",
+    "ana_yemek": "Pilav Üstü Tavuk Döner (547 kcal)",
+    "yardimci_yemek": "Menekşe Salata (84 kcal)",
     "ek": "Ayran (64 kcal)",
-    "toplam_kalori": "1276 KKAL"
+    "toplam_kalori": "889 KKAL"
   },
   {
-    "tarih": "16.12.2025",
-    "corba": "Kırmızı Mercimek Çorba (162 kcal)",
-    "ana_yemek": "Etli Tirit (463 kcal)",
-    "yardimci_yemek": "Soslu Brokoli/Karnabahar (75 kcal)",
-    "ek": "Tramisu (268 kcal)",
-    "toplam_kalori": "968 KKAL"
+    "tarih": "13.01.2026",
+    "corba": "Ezogelin Çorba (233 kcal)",
+    "ana_yemek": "Hamburger (750 kcal)",
+    "yardimci_yemek": "Elma Dilim Patates/Ketçap-Mayonez (335 kcal)",
+    "ek": "Ekler Pasta (359 kcal)",
+    "toplam_kalori": "1677 KKAL"
   },
   {
-    "tarih": "17.12.2025",
-    "corba": "Mahluta Çorba (117 kcal)",
-    "ana_yemek": "Sulu Köfte (522 kcal)",
-    "yardimci_yemek": "Nohutlu Bulgur Pilavı (336 kcal)",
-    "ek": "Yoğurt (158 kcal)",
-    "toplam_kalori": "1133 KKAL"
+    "tarih": "14.01.2026",
+    "corba": "Yayla Çorba (188 kcal)",
+    "ana_yemek": "Çiftlik Kebap (724 kcal)",
+    "yardimci_yemek": "Bulgur Pilavı (373 kcal)",
+    "ek": "Turşulu Menekşe Salata (84 kcal)",
+    "toplam_kalori": "1369 KKAL"
   },
   {
-    "tarih": "18.12.2025",
-    "corba": "Anadolu Çorba (261 kcal)",
-    "ana_yemek": "Izgara Tavuk Kanat/Patates Garnitür (485 kcal)",
-    "yardimci_yemek": "Soslu Spagetti (313 kcal)",
-    "ek": "Kakaolu İrmik Tatlısı (306 kcal)",
-    "toplam_kalori": "1365 KKAL"
+    "tarih": "15.01.2026",
+    "corba": "Kırmızı Mercimek Çorba (204 kcal)",
+    "ana_yemek": "Ispanak Yatağında Izgara Tavuk (533 kcal)",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı (435 kcal)",
+    "ek": "Kakaolu Puding (318 kcal)",
+    "toplam_kalori": "1490 KKAL"
   },
   {
-    "tarih": "19.12.2025",
-    "corba": "Şehriye Çorba (114 kcal)",
-    "ana_yemek": "İsveç Köfte/Sebze Garnitür (362 kcal)",
+    "tarih": "16.01.2026",
+    "corba": "Tarhana Çorba (176 kcal)",
+    "ana_yemek": "Sahan Köfte (699 kcal)",
     "yardimci_yemek": "Su Böreği (412 kcal)",
+    "ek": "Kokteyl Hoşaf (184 kcal)",
+    "toplam_kalori": "1471 KKAL"
+  },
+  {
+    "tarih": "19.01.2026",
+    "corba": "Yoğurt Çorba (135 kcal)",
+    "ana_yemek": "Etli Kuru Fasülye (410 kcal)",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı/Turşu (440 kcal)",
+    "ek": "Cevizli Kadayıf (340 kcal)",
+    "toplam_kalori": "1325 KKAL"
+  },
+  {
+    "tarih": "20.01.2026",
+    "corba": "Kırmızı Mercimek Çorba (204 kcal)",
+    "ana_yemek": "Pideli Köfte (512 kcal)",
+    "yardimci_yemek": "Patates Salatası (175 kcal)",
     "ek": "Meyve (80 kcal)",
     "toplam_kalori": "971 KKAL"
   },
   {
-    "tarih": "22.12.2025",
-    "corba": "Köylüm Çorba (149 kcal)",
-    "ana_yemek": "Lahmacun (474 kcal)",
-    "yardimci_yemek": "Menekşe Salata (84 kcal)",
+    "tarih": "21.01.2026",
+    "corba": "Tarhana Çorba (176 kcal)",
+    "ana_yemek": "Piliç Topkapı (784 kcal)",
+    "yardimci_yemek": "Taze Fesleğenli Makarna (347 kcal)",
     "ek": "Ayran (64 kcal)",
-    "toplam_kalori": "771 KKAL"
+    "toplam_kalori": "1371 KKAL"
   },
   {
-    "tarih": "23.12.2025",
-    "corba": "Mahluta Çorba (117 kcal)",
-    "ana_yemek": "Patlıcan Yatağında Tavuk Sote (360 kcal)",
-    "yardimci_yemek": "Soslu Makarna (313 kcal)",
-    "ek": "Meyve (80 kcal)",
-    "toplam_kalori": "870 KKAL"
-  },
-  {
-    "tarih": "24.12.2025",
-    "corba": "Tarhana Çorba (168 kcal)",
-    "ana_yemek": "Etli Kuru Fasulye (442 kcal)",
-    "yardimci_yemek": "Bulgur Pilavı/Turşu (302 kcal)",
-    "ek": "Kakaolu Puding (318 kcal)",
-    "toplam_kalori": "1230 KKAL"
-  },
-  {
-    "tarih": "25.12.2025",
-    "corba": "Kırmızı Mercimek Çorba (162 kcal)",
-    "ana_yemek": "Pideli Köfte (517 kcal)",
-    "yardimci_yemek": "Patates Salatası (175 kcal)",
-    "ek": "Love Bombing (365 kcal)",
-    "toplam_kalori": "1219 KKAL"
-  },
-  {
-    "tarih": "26.12.2025",
-    "corba": "Alaca Çorba (160 kcal)",
-    "ana_yemek": "Izgara Tavuk Pirzola/Baharatlı Patates Garnitür (485 kcal)",
-    "yardimci_yemek": "Şehriyeli Pirinç Pilavı (304 kcal)",
-    "ek": "Yoğurt (158 kcal)",
-    "toplam_kalori": "1107 KKAL"
-  },
-  {
-    "tarih": "29.12.2025",
-    "corba": "Minestrone Çorba (215 kcal)",
-    "ana_yemek": "Etli Nohut (405 kcal)",
-    "yardimci_yemek": "Bulgur Pilavı/Turşu (302 kcal)",
-    "ek": "İncir Uyutma (265 kcal)",
-    "toplam_kalori": "1187 KKAL"
-  },
-  {
-    "tarih": "30.12.2025",
-    "corba": "Kırmızı Mercimek Çorba (162 kcal)",
-    "ana_yemek": "Hasanpaşa Köfte (483 kcal)",
-    "yardimci_yemek": "Sade Pirinç Pilavı (360 kcal)",
-    "ek": "Cacık (94 kcal)",
-    "toplam_kalori": "1099 KKAL"
-  },
-  {
-    "tarih": "31.12.2025",
-    "corba": "Köylüm Çorba (149 kcal)",
-    "ana_yemek": "Tavuk Taleks (510 kcal)",
-    "yardimci_yemek": "Yoğurtlu Mantı Makarna (429 kcal)",
+    "tarih": "22.01.2026",
+    "corba": "Şehriye Çorba (161 kcal)",
+    "ana_yemek": "Hünkar Beğendi (748 kcal)",
+    "yardimci_yemek": "Bulgur Pilavı (373 kcal)",
     "ek": "Menekşe Salata (84 kcal)",
-    "toplam_kalori": "1172 KKAL"
+    "toplam_kalori": "1366 KKAL"
+  },
+  {
+    "tarih": "23.01.2026",
+    "corba": "Sebze Çorba (150 kcal)",
+    "ana_yemek": "Tavuk Taleks (656 kcal)",
+    "yardimci_yemek": "Arpa Şehriye Pilavı (360 kcal)",
+    "ek": "Frambuaz Soslu Muhallebi (303 kcal)",
+    "toplam_kalori": "1469 KKAL"
+  },
+  {
+    "tarih": "26.01.2026",
+    "corba": "Anadolu Çorba (261 kcal)",
+    "ana_yemek": "İzmir Köfte (712 kcal)",
+    "yardimci_yemek": "Cevizli Erişte (412 kcal)",
+    "ek": "Menekşe Salata (84 kcal)",
+    "toplam_kalori": "1469 KKAL"
+  },
+  {
+    "tarih": "27.01.2026",
+    "corba": "Mahluta Çorba (204 kcal)",
+    "ana_yemek": "Köy Usulü Tavuk Biftek (580 kcal)",
+    "yardimci_yemek": "Soslu Spagetti (456 kcal)",
+    "ek": "Aşure (344 kcal)",
+    "toplam_kalori": "1584 KKAL"
+  },
+  {
+    "tarih": "28.01.2026",
+    "corba": "Gemici Çorba (272 kcal)",
+    "ana_yemek": "Misket Köfteli Bezelye (376 kcal)",
+    "yardimci_yemek": "Şehriyeli Pirinç Pilavı (435 kcal)",
+    "ek": "Trileçe (244 kcal)",
+    "toplam_kalori": "1327 KKAL"
+  },
+  {
+    "tarih": "29.01.2026",
+    "corba": "Kırmızı Mercimek Çorba (204 kcal)",
+    "ana_yemek": "Pilav Üstü Et Kavurma (826 kcal)",
+    "yardimci_yemek": "Turşulu Menekşe Salata (84 kcal)",
+    "ek": "Ayran (64 kcal)",
+    "toplam_kalori": "1178 KKAL"
+  },
+  {
+    "tarih": "30.01.2026",
+    "corba": "Ezogelin Çorba (233 kcal)",
+    "ana_yemek": "Izgara Tavuk Pirzola/Sebze Garnitür (710 kcal)",
+    "yardimci_yemek": "Yoğurtlu Mantı Makarna (476 kcal)",
+    "ek": "Meyve (80 kcal)",
+    "toplam_kalori": "1499 KKAL"
   }
 ]
